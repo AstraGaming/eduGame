@@ -1,12 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <meta charset="utf-8">
+    <title>EduGame</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/templatemo_misc.css">
+    <link rel="stylesheet" href="css/templatemo_style.css">
+
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 </head>
+
 <body>
-    <h1>Bienvenido!</h1>
+    <div class="site-main" id="sTop">
+        <div class="site-header">
+            <div class="main-header">
+                <div class="container">
+                    <div id="menu-wrapper">
+                        <div class="row">
+                            <div class="logo-wrapper col-md-2 col-sm-2">
+                                <h1>
+                                    <a href="#">EduGame</a>
+                                </h1>
+                            </div> <!-- /.logo-wrapper -->
+                            <div class="col-md-10 col-sm-10 main-menu text-right">
+                                <div class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></div>
+                                <ul class="menu-first">
+                                    <li class="active"><a href="#">Inicio</a></li>
+                                    <li><a href="#juegos">Juegos</a></li>
+                                    <li><a href="#login">Acceso</a></li>
+                                    <li><a href="#footer">Contacto</a></li>
+                                </ul>
+                            </div> <!-- /.main-menu -->
+                        </div> <!-- /.row -->
+                    </div> <!-- /#menu-wrapper -->
+                </div> <!-- /.container -->
+            </div> <!-- /.main-header -->
+        </div> <!-- /.site-header -->
+        <div class="site-slider">
+            <div class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="overlay"></div>
+                            <img src="images/slide1.jpg" alt="">
+                            <div class="slider-caption visible-md visible-lg">
+                                <h2>Nuestros juegos</h2>
+                                <p>Aumenta tu agilidad mental</p>
+                                <a href="#juegos" class="slider-btn">A ver</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="overlay"></div>
+                            <img src="images/slide2.jpg" alt="">
+                            <div class="slider-caption visible-md visible-lg">
+                                <h2>Inicia sesión / Registrate</h2>
+                                <p>Adentrate en nuestra página web</p>
+                                <a href="#login" class="slider-btn">Ir a inicio de sesión</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="overlay"></div>
+                            <img src="images/slide3.jpg" alt="">
+                            <div class="slider-caption visible-md visible-lg">
+                                <h2>Información de contacto</h2>
+                                <p>¿Necesitas saber algo más de nosotros?</p>
+                                <a href="#footer" class="slider-btn">Ir al pie de página</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div> <!-- /.flexslider -->
+            </div> <!-- /.slider -->
+        </div> <!-- /.site-slider -->
+    </div> <!-- /.site-main -->
+
+
+    <div class="content-section" id="juegos">
+        <div class="container">
+            <div class="row">
+                <div class="heading-section col-md-12 text-center">
+                    <h2>Juegos disponibles</h2>
+                    <p>Nosotros diseñamos juegos educativos para ti</p>
+                </div> <!-- /.heading-section -->
+            </div> <!-- /.row -->
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item" id="service-1">
+                        <div class="service-icon">
+                            <i class="fa fa-krw"></i>
+                        </div> <!-- /.service-icon -->
+                        <div class="service-content">
+                            <div class="inner-service">
+                                <h3>Wordless</h3>
+                                <p>(Modo educativo) Consiste en adivinar una palabra en seis intentos, colocando las letras
+                                    ofrecidas en el hueco correcto.</p>
+                            </div>
+                        </div> <!-- /.service-content -->
+                    </div> <!-- /#service-1 -->
+                </div> <!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item" id="service-2">
+                        <div class="service-icon">
+                            <i class="fa fa-ban"></i>
+                        </div> <!-- /.service-icon -->
+                        <div class="service-content">
+                            <div class="inner-service">
+                                <h3>Vacío</h3>
+                                <p>???</p>
+                            </div>
+                        </div> <!-- /.service-content -->
+                    </div> <!-- /#service-1 -->
+                </div> <!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item" id="service-3">
+                        <div class="service-icon">
+                            <i class="fa fa-ban"></i>
+                        </div> <!-- /.service-icon -->
+                        <div class="service-content">
+                            <div class="inner-service">
+                                <h3>Vacío</h3>
+                                <p>???</p>
+                            </div>
+                        </div> <!-- /.service-content -->
+                    </div> <!-- /#service-1 -->
+                </div> <!-- /.col-md-3 -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="service-item" id="service-4">
+                        <div class="service-icon">
+                            <i class="fa fa-ban"></i>
+                        </div> <!-- /.service-icon -->
+                        <div class="service-content">
+                            <div class="inner-service">
+                                <h3>Vacío</h3>
+                                <p>???</p>
+                            </div>
+                        </div> <!-- /.service-content -->
+                    </div> <!-- /#service-1 -->
+                </div> <!-- /.col-md-3 -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /#juegos -->
+
+    <div class="content-section" id="login">
+        <div class="container">
+            <div class="row">
+                <div class="containerLogin content-section">
+                    <div class="backbox">
+                        <div class="loginMsg">
+                            <div class="textcontent">
+                                <p class="title">¿No tienes una cuenta?</p>
+                                <p>Registrate para poder unirte.</p>
+                                <button id="switch1">Registrarse</button>
+                            </div>
+                        </div>
+                        <div class="signupMsg visibility">
+                            <div class="textcontent">
+                                <p class="title">¿Ya tienes una cuenta?</p>
+                                <p>Inicia sesión para acceder al sitio web.</p>
+                                <button id="switch2">Iniciar sesión</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- backbox -->
+
+                    <div class="frontbox">
+                        <div class="login">
+                            <h2>Iniciar sesión</h2>
+                            <div class="inputbox">
+                                <input type="text" name="email" placeholder="   EMAIL">
+                                <input type="password" name="password" placeholder="    CONTRASEÑA">
+                            </div>
+                            <p id="forgotPassw">¿Has olvidado la contraseña?</p>
+                            <button>Iniciar sesión</button>
+                        </div>
+
+                        <div class="signup hide">
+                            <h2>Registrate</h2>
+                            <div class="inputbox">
+                                <input type="text" name="fullname" placeholder="    NOMBRE DE USUARIO">
+                                <input type="text" name="email" placeholder="   EMAIL">
+                                <input type="password" name="password" placeholder="    CONTRASEÑA">
+                            </div>
+                            <button>Registrame</button>
+                        </div>
+
+                    </div>
+                    <!-- frontbox -->
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /#portfolio -->
+
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 hidden-xs text-right">
+                    <p>EduGame</p>
+                    <p>Año: 2022</p>
+                </div>
+                <div class="col-md-2 hidden-xs text-right">
+                    <p>Preg. Frecuentes</p>
+                    <p>Aviso legal</p>
+                    <p>Política de privacidad</p>
+                </div>
+                <div class="col-md-3 hidden-xs text-right">
+                    <p>Gmail: astragamingentertainment@gmail.com</p>
+                </div>
+                <div class="col-md-4 hidden-xs text-right">
+                    <a href="#top" id="go-top">Volver al principio</a>
+                </div> <!-- /.text-center -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+    </div> <!-- /#footer -->
+
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script type="module" src="./js/index.js"></script>
 </body>
+
 </html>
