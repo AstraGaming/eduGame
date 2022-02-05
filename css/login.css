@@ -1,0 +1,162 @@
+.containerLogin {
+
+    margin-left: 50%;
+    margin-right: 50%;
+    margin-top: 350px;
+    font-family: "Roboto", sans-serif;
+
+    /*border:1px solid white;*/
+    width: 900px;
+    height: 400px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+}
+
+@media only screen and (max-width: 950px) {
+    .containerLogin {
+      width: 500px;
+      height: 320px;
+    }
+}
+
+.backbox {
+    background-color: #404040;
+    border-radius: 20px;
+    width: 100%;
+    height: 320px;
+    transform: translate(0, -50%);  
+    display: inline-flex;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.frontbox {
+    background-color: white;
+    border: 0.1px #597F3B solid;
+    border-radius: 20px;
+    height: 100%;
+    width: 50%;
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    margin-right: 3%;
+    margin-left: 3%;
+    transition: right 0.8s ease-in-out;
+}
+
+.moving {
+    right: 45%;
+}
+
+.loginMsg,
+.signupMsg {
+    width: 50%;
+    height: 100%;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.loginMsg .title,
+.signupMsg .title {
+    font-weight: 300;
+    font-size: 28px;
+}
+
+.loginMsg p,
+.signupMsg p {
+    font-weight: 100;
+}
+
+.textcontent {
+    color: white;
+    margin-top: 65px;
+    margin-left: 12%;
+}
+
+.loginMsg button,
+.signupMsg button {
+    background-color: #404040;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    font-size: 17px;
+    box-sizing: content-box;
+    font-weight: 300;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+/* front box content*/
+.login,
+.signup {
+    padding: 20px;
+    text-align: center;
+}
+
+.login h2,
+.signup h2 {
+    color: #6AB72F;
+    font-size: 28px;
+}
+
+.inputbox {
+    margin-top: 30px;
+}
+.login input,
+.signup input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #f2f2f2;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+
+.login button,
+.signup button {
+    background-color: #6AB72F;
+    border: none;
+    color: white;
+    font-size: 17px;
+    font-weight: 300;
+    box-sizing: content-box;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100px;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+/* Fade In & Out*/
+.login p {
+    cursor: pointer;
+    color: #404040;
+    font-size: 20px;
+}
+
+.loginMsg,
+.signupMsg {
+    /*opacity: 1;*/
+    transition: opacity 0.8s ease-in-out;
+}
+
+.visibility {
+    opacity: 0;
+}
+
+.hide {
+    display: none;
+}
+
+#forgotPassw:hover {
+    color: purple;
+    cursor: pointer;
+}
