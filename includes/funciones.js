@@ -1,5 +1,5 @@
 "use strict";
-import {app,autentificacion} from "./datosConexion.js";
+import {app, autentificacion} from "../js/datosConexion.js";
 import {
     getFirestore,
     collection,
@@ -26,10 +26,14 @@ import {
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 
+/** Conexión con la base de datos. **/
+const db = getFirestore(app);
+
 /******* FUNCIONES CUENTAS ********/
 /********************** Gestión de cuentas *****************************/
 const alumnos = collection(db, "alumnos");
 const profesores = collection(db, "profesores");
+
 //Función para la creación de las cuentas.
 export const crearCuenta = async (usu,pass,nombre,rol) => {
     //Rol será 0 para alumno y 1 para profesor
