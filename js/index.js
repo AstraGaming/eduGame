@@ -9,8 +9,6 @@ window.onload = () =>{
     // Activa el dinamismo del login --> Importante activarlo cada vez que pintemos el login (¡Son inseparables!).
     funcLog.activarFuncLogin();
 
-    
-
 
     /******* INICIAR SESIÓN **********/
     //Evento onclick para el botón "Iniciar" de la parte de Iniciar sesión.
