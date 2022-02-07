@@ -31,6 +31,8 @@ window.onload = () =>{
             rol = 0;
         }
         f.crearCuenta(d.getElementById("emailN").value, d.getElementById("passN").value,d.getElementById("usuN").value,rol);
+        d.getElementById("cCuenta").innerHTML = "<h4>Cuenta creada con éxito!</h4>";
+    
     });
 
 

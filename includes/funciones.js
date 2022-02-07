@@ -38,6 +38,7 @@ const profesores = collection(db, "profesores");
 export const crearCuenta = async (usu,pass,nombre,rol) => {
     //Rol será 0 para alumno y 1 para profesor
         createUserWithEmailAndPassword(autentificacion, usu, pass)
+        
           .then((credenciales) => {
             //Creamos el usuario en nuestra colección.
             if(rol == 1){
@@ -106,7 +107,8 @@ export const iniciarSesion = (usuario, contra) => {
     signInWithEmailAndPassword(autentificacion, usuario, contra)
       .then((credenciales) => {
         console.log("Sesión Iniciada");
-        location.reload();
+        //Cuando se inicie sesión redireccionamos a la pág siguiente.
+        //location.href="";
       })
       .catch((error) => {
         console.log(error);
