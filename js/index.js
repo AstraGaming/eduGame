@@ -21,6 +21,7 @@ window.onload = () =>{
 
     /******* CREAR CUENTA ************/
     //Evento onclick para el botón "Crear" en la parte de Crear cuenta.
+    /* ACTUALIZAR CON LOS NUEVOS VALORES E IMPLEMENTAR
     d.getElementById("crearCuenta").addEventListener("click", () =>{
         var rol = 0;
         //Si es profesor.
@@ -34,7 +35,7 @@ window.onload = () =>{
         f.crearCuenta(d.getElementById("emailN").value, d.getElementById("passN").value,d.getElementById("usuN").value,rol);
         d.getElementById("cCuenta").innerHTML = "<h4>Cuenta creada con éxito!</h4>";
     });
-
+    */
 
 
 
