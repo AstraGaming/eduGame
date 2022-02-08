@@ -1,7 +1,8 @@
 "use strict";
 import * as f from "../includes/funciones.js";
 import * as funcLog from "./funcionalidadLogin.js";
-
+import * as alu from "../includes/alumnos.js";
+import * as prof from "../includes/profesores.js"
 var d = document;
 
 window.onload = () =>{
@@ -32,11 +33,27 @@ window.onload = () =>{
         }
         f.crearCuenta(d.getElementById("emailN").value, d.getElementById("passN").value,d.getElementById("usuN").value,rol);
         d.getElementById("cCuenta").innerHTML = "<h4>Cuenta creada con éxito!</h4>";
-    
     });
 
 
 
 
     /******* CERRAR SESIÓN ************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**************** PRUEBAS ******************/
+    d.getElementById("pruebas").addEventListener("click", () =>{
+        prof.verProfesor("iJRwah0eW0MmB1gWMKm3vERx7tT2");
+    })
 };

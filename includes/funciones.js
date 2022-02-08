@@ -37,7 +37,7 @@ const profesores = collection(db, "profesores");
 //Función para la creación de las cuentas.
 export const crearCuenta = async (usu,pass,nombre,rol) => {
     //Rol será 0 para alumno y 1 para profesor
-    console.log("usuario creado en auth, rol"+rol);
+    console.log("Usuario creado en auth, rol "+rol);
         createUserWithEmailAndPassword(autentificacion, usu, pass)
           .then((credenciales) => {
             //Creamos el usuario en nuestra colección.
