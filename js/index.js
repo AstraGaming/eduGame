@@ -53,7 +53,9 @@ window.onload = () =>{
 
 
     /**************** PRUEBAS ******************/
+    /*
     d.getElementById("pruebas").addEventListener("click", () =>{
         prof.verProfesor("iJRwah0eW0MmB1gWMKm3vERx7tT2");
     })
+    */
 };
