@@ -33,9 +33,11 @@ const alumnos = collection(db, "alumnos");
 
 //Crear dato en la lista alumnos.
 /* LO DEJAREMOS PARA LA PARTE DE ADMIN */
-export const crearAlumno = async (nombre, email, fecha, id, rol) => {
+export const crearAlumno = async (nombre, ape1, ape2, email, fecha, id, rol) => {
     const nuevoAlumno = {
         nombre: nombre,
+        apellido1: ape1,
+        apellido2: ape2,
         email: email,
         fCreacion: fecha,
         rol: rol,
@@ -54,10 +56,11 @@ export const verAlumno = async (id) => {
     );
     const alumno = await getDocs(consulta);
     var nombre=alumno.docs[0].data().nombre;
+    var apellidos=alumno.docs[0].data().apellido1+" "+alumno.docs[0].data().apellido2;
     var email=alumno.docs[0].data().email;
     var fCreacion=alumno.docs[0].data().fCreacion;
 
-    console.log(nombre+" "+email+" "+fCreacion);
+    console.log(nombre+" "+apellidos+" "+email+" "+fCreacion);
 }
 //Editar datos alumno.
 export const editaralumno = async (id,nombre) =>{
