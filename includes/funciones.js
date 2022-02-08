@@ -1,4 +1,6 @@
 "use strict";
+import * as alu from "./alumnos.js";
+import * as prof from "./profesores.js";
 import {app, autentificacion} from "../js/datosConexion.js";
 import {
     getFirestore,
@@ -43,11 +45,15 @@ export const crearCuenta = async (usu,pass,nombre,rol) => {
             //Creamos el usuario en nuestra colección.
             if(rol == 1){
                 //Si es profesor con rol 1.
-                crearProfesor(nombre,usu,credenciales.user.metadata.creationTime,credenciales.user.uid,rol);
+                /* IMPLEMENTAR CAMBIOS DE VALORES
+                prof.crearProfesor(nombre,usu,credenciales.user.metadata.creationTime,credenciales.user.uid,rol);
+                */
             }
             else {
                 //Si es alumno con rol 0.
-                crearAlumno(nombre,usu,credenciales.user.metadata.creationTime,credenciales.user.uid,rol);
+                /* IMPLEMENTAR CAMBIOS DE VALORES
+                alu.crearAlumno(nombre,usu,credenciales.user.metadata.creationTime,credenciales.user.uid,rol);
+                */
             }
             
           })
@@ -55,6 +61,9 @@ export const crearCuenta = async (usu,pass,nombre,rol) => {
             console.log(error);
           });
 }
+
+/* IMPLEMENTAMOS LAS FUNCIONES EN SUS JS RESPECTIVOS
+BORRAR CUANDO NO HAGA FALTA
 //Crear dato en la lista alumnos.
 const crearAlumno = async (nombre, email, fecha, id, rol) => {
     
@@ -85,6 +94,8 @@ const crearProfesor = async (nombre, email, fecha, id, rol) => {
     console.log(`Nuevo alumno creado con id ${listaProf.id} en la lista`);
     location.reload();
 }
+*/
+
 /*
 //Comprobar si hay una sesión iniciada.
 onAuthStateChanged(autentificacion, (usuario) => {
