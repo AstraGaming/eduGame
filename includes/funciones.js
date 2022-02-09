@@ -118,6 +118,7 @@ export const iniciarSesion = (usuario, contra) => {
     signInWithEmailAndPassword(autentificacion, usuario, contra)
       .then((credenciales) => {
         console.log("Sesión Iniciada");
+
         //Cuando se inicie sesión redireccionamos a la pág siguiente.
         //location.href="";
       })

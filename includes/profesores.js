@@ -64,6 +64,22 @@ export const verProfesor = async (id) => {
 
     console.log(nombre+" "+apellidos+" "+email+" "+fCreacion);
 }
+
+// Es profesor.
+export const esProfesor = async (id) => {
+    const consulta = query(
+        profesores,
+        where("id", "==", id)
+    );
+    const profesor = await getDocs(consulta);
+    var nombre=profesor.docs[0].data().nombre;
+    var apellidos=profesor.docs[0].data().apellido1+" "+profesor.docs[0].data().apellido2;
+    var email=profesor.docs[0].data().email;
+    var fCreacion=profesor.docs[0].data().fCreacion;
+
+    console.log(nombre+" "+apellidos+" "+email+" "+fCreacion);
+}
+
 //Editar datos profesor.
 export const editarProfesor = async (id,nombre) =>{
     try{

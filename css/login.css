@@ -1,8 +1,7 @@
 .containerLogin {
 
     margin-left: 50%;
-    margin-right: 50%;
-    margin-top: 350px;
+    margin-top: 500px;
     font-family: "Roboto", sans-serif;
 
     /*border:1px solid white;*/
@@ -22,7 +21,7 @@
     }
 }
 
-.backbox {
+.containerLogin .backbox {
     background-color: #404040;
     border-radius: 20px;
     width: 100%;
@@ -35,7 +34,7 @@
     -o-border-radius: 20px;
 }
 
-.frontbox {
+.containerLogin .frontbox {
     background-color: white;
     border: 0.1px #597F3B solid;
     border-radius: 20px;
@@ -49,37 +48,37 @@
     transition: right 0.8s ease-in-out;
 }
 
-.moving {
+.containerLogin .moving {
     right: 45%;
 }
 
-.loginMsg,
-.signupMsg {
+.containerLogin .loginMsg,
+.containerLogin .signupMsg {
     width: 50%;
     height: 100%;
     font-size: 20px;
     box-sizing: border-box;
 }
 
-.loginMsg .title,
-.signupMsg .title {
+.containerLogin .loginMsg .title,
+.containerLogin .signupMsg .title {
     font-weight: 300;
     font-size: 28px;
 }
 
-.loginMsg p,
-.signupMsg p {
+.containerLogin .loginMsg p,
+.containerLogin .signupMsg p {
     font-weight: 100;
 }
 
-.textcontent {
+.containerLogin .textcontent {
     color: white;
     margin-top: 65px;
     margin-left: 12%;
 }
 
-.loginMsg button,
-.signupMsg button {
+.containerLogin .loginMsg button,
+.containerLogin .signupMsg button {
     background-color: #404040;
     border: 2px solid white;
     border-radius: 10px;
@@ -92,23 +91,23 @@
 }
 
 /* front box content*/
-.login,
-.signup {
+.containerLogin .login,
+.containerLogin .signup {
     padding: 20px;
     text-align: center;
 }
 
-.login h2,
-.signup h2 {
+.containerLogin .login h2,
+.containerLogin .signup h2 {
     color: #6AB72F;
     font-size: 28px;
 }
 
-.inputbox {
+.containerLogin .inputbox {
     margin-top: 30px;
 }
-.login input,
-.signup input {
+.containerLogin .login input,
+.containerLogin .signup input {
     display: block;
     width: 100%;
     height: 40px;
@@ -118,8 +117,8 @@
     font-size: 17px;
 }
 
-.login button,
-.signup button {
+.containerLogin .login button,
+.containerLogin .signup button {
     background-color: #6AB72F;
     border: none;
     color: white;
@@ -136,27 +135,27 @@
 }
 
 /* Fade In & Out*/
-.login p {
+.containerLogin .login p {
     cursor: pointer;
     color: #404040;
     font-size: 20px;
 }
 
-.loginMsg,
-.signupMsg {
+.containerLogin .loginMsg,
+.containerLogin .signupMsg {
     /*opacity: 1;*/
     transition: opacity 0.8s ease-in-out;
 }
 
-.visibility {
+.containerLogin .visibility {
     opacity: 0;
 }
 
-.hide {
+.containerLogin .hide {
     display: none;
 }
 
-#forgotPassw:hover {
+.containerLogin #forgotPassw:hover {
     color: purple;
     cursor: pointer;
 }

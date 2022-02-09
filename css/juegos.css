@@ -1,0 +1,89 @@
+.containerJuegos {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+}
+
+.containerJuegos h2 {
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(0, 20, 204);
+    text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.containerJuegos .text-center {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.containerJuegos .lightbox-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.containerJuegos .lightbox-gallery div>img {
+    min-width: 400px;
+    max-width: 100%;
+    height: 400px;
+    display: block;
+}
+
+.containerJuegos .containerJuego:hover {
+    cursor: pointer;
+}
+
+.containerJuegos .lightbox-gallery div {
+    margin: 10px;
+    flex-basis: 180px;
+}
+
+@media only screen and (max-width: 480px) {
+    .containerJuegos .lightbox-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .containerJuegos .lightbox>div {
+        margin-bottom: 30px;
+    }
+}
+
+/*Lighbox CSS*/
+
+.containerJuegos .lightbox {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+
+.containerJuegos .lightbox img {
+    display: block;
+    margin: auto;
+}
+
+.containerJuegos .lightbox .caption {
+    margin: 15px auto;
+    width: 50%;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: 700;
+    color: #eee;
+}
