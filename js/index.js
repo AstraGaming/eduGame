@@ -1,14 +1,20 @@
 "use strict";
+import * as plantillas from "./plantillas.js";
+import * as login from "./funcionesLogin.js";
+import * as profesor from "./funcionesProfesor.js";
+import * as admi from "./funcionesAdmi.js";
+
 import * as f from "../includes/funciones.js";
-import * as funcLog from "./funcionalidadLogin.js";
 import * as alu from "../includes/alumnos.js";
 import * as prof from "../includes/profesores.js"
+
 var d = document;
 
 window.onload = () =>{
 
-    // Activa el dinamismo del login --> Importante activarlo cada vez que pintemos el login (¡Son inseparables!).
-    funcLog.activarFuncLogin();
+    // Pintamos y activamos el dinamismo del login --> Importante activarlo cada vez que pintemos el login (¡Son inseparables!).
+    login.pintar(plantillas);
+
 
 
     /******* INICIAR SESIÓN **********/
@@ -16,44 +22,29 @@ window.onload = () =>{
     d.getElementById("iniciarSesion").addEventListener("click", () =>{
         f.iniciarSesion(d.getElementById("emailS").value, d.getElementById("passS").value);
     });
-
-
-
-    /******* CREAR CUENTA ************/
-    //Evento onclick para el botón "Crear" en la parte de Crear cuenta.
-    d.getElementById("crearCuenta").addEventListener("click", () =>{
+    /******** REGISTRO **********/
+    //Como ya habrá información en la BBDD, al registrarse se completará ciertos valores y 
+    //se comprobará que el usuario esté en la BBDD, para que no pueda registrarse cualquier persona.
+    d.getElementById("crearCuenta").addEventListener("click", () => {
         var rol = 0;
-        //Si es profesor.
-        if(d.getElementById("maestro").checked){
-            rol = 1;
-        }
-        //Si es alumno.
-        else{
-            rol = 0;
-        }
-        f.crearCuenta(d.getElementById("emailN").value, d.getElementById("passN").value,d.getElementById("usuN").value,rol);
-        d.getElementById("cCuenta").innerHTML = "<h4>Cuenta creada con éxito!</h4>";
+        if (d.getElementById("maestro").checked) rol = 1;
+        f.crearCuenta(d.getElementById("usuN").value,d.getElementById("emailN").value, d.getElementById("passN").value,rol);
     });
 
 
+    /** INICIO --> Para profesores */
+        /** Activamos el menú. */
+        //profesor.pintarMenu(plantillas);
 
+        /** Cargamos los juegos. */
+        //d.getElementById("contenido").innerHTML = plantillas.pintarJuegos();
 
-    /******* CERRAR SESIÓN ************/
+        /** Pintamos el pie de página. */
+        //d.getElementById("footer").innerHTML = plantillas.pintarFooter();
+    /** FIN --> Para profesores */
 
-
-
-
-
-
-
-
-
-
-
-
-
-    /**************** PRUEBAS ******************/
-    d.getElementById("pruebas").addEventListener("click", () =>{
-        prof.verProfesor("iJRwah0eW0MmB1gWMKm3vERx7tT2");
-    })
+    /** INICIO --> Para admi */
+        /** Se activa su menú. */
+        //admi.pintarMenu(plantillas);
+    /** FIN --> Para admi */
 };

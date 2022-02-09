@@ -1,0 +1,101 @@
+.tablaAlumnos h1{
+    font-size: 30px;
+    color: rgb(255, 0, 0);
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .tablaAlumnos table{
+    width:100%;
+    table-layout: fixed;
+  }
+  .tablaAlumnos .tbl-header{
+    background-color: rgb(22, 20, 20);
+   }
+  .tablaAlumnos .tbl-content{
+    height: 380px;
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .tablaAlumnos th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .tablaAlumnos td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.698);
+  }
+  
+  .tablaAlumnos {
+    margin: 50px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* for custom scrollbar for webkit browser*/
+  
+  .tablaAlumnos ::-webkit-scrollbar {
+      width: 6px;
+  } 
+  .tablaAlumnos ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  } 
+  .tablaAlumnos ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  }
+
+  .tablaAlumnos #alumnoClase {
+    display: inline-flex;
+  }
+
+  .tablaAlumnos .item {
+    margin: 30px;
+  }
+
+  .tablaAlumnos .item p {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(236, 54, 22);
+  }
+
+  .tablaAlumnos .item select{
+    padding: 10px;
+  }
+
+  .tablaAlumnos h2 {
+    text-align: center;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    color: yellowgreen;
+  }
+
+  .tablaAlumnos input {
+    height: 40px;
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+ }
+
+  .tablaAlumnos #anadir {
+    margin-bottom: 30px;
+  }
+
+  .tablaAlumnos input[type=button]:hover {
+    width: 145px;
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+  }

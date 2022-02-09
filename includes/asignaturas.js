@@ -19,6 +19,7 @@ import {
     deleteDoc,
     deleteField,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
+import { buscarAsignatura } from "./cursos.js";
 /** Conexión con la base de datos. **/
 const db = getFirestore(app);
 var d = document;
@@ -37,19 +38,20 @@ export const crearAsignatura = async (nombre, curso, alumnos, profesor) => {
     location.reload();
 }
 //Datos del asignatura.
-export const verAsignatura = async (nombre, curso) => {
-    const consulta = query(
-        asignaturas,
-        where("nombre", "==", nombre),
-        where("curso", "==", curso)
-    );
-    const asignatura = await getDocs(consulta);
-    var nombre=asignatura.docs[0].data().nombre;
-    var curso=asignatura.docs[0].data().curso;
-    var arrayAlumnos=asignaturas.docs[0].data().alumnos;
-    var profesor=asignatura.docs[0].data().profesor;
+export const verAsignatura = async (profe, nombre) => {
+    const asignaturasLista = await getDocs(asignaturas);
+    asignaturasLista.docs.map((documento) => {
+        for (var i = 0; i < nombre.length; i++){
+            if(documento.data().nombre == nombre[i] && (documento.data().profesor == profe)){
+                d.getElementById("tablaAsignaturas").innerHTML += "<tr><td id='"+documento.data().nombre+"'></td><td>"+documento.data().nombre+"</td></tr>";
+                buscarAsignatura(documento.data().nombre);
+            }
+            else {
+                console.log("No hay asignaturas.");
+            }
+        }
+    });
 
-    console.log(nombre+" "+curso+" "+arrayAlumnos+" "+profesor);
 }
 //Editar datos asignatura.
 export const editarAsignatura = async (nombre) =>{

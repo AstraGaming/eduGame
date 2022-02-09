@@ -1,0 +1,120 @@
+#perfilProfesor .form {
+    width: 25%;
+    height: 440px;
+    background: #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #000;
+    margin-left: 150px;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    padding: 20px 30px;
+    max-width: calc(100vw - 40px);
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    position: relative
+}
+
+#perfilProfesor input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .3s;
+    border-bottom: 2px solid #bebed2
+}
+
+#perfilProfesor input:focus {
+    border-bottom: 2px solid #78788c
+}
+
+#perfilProfesor p:before {
+    content: attr(type);
+    display: block;
+    margin: 28px 0 0;
+    font-size: 14px;
+    color: #5a5a5a
+}
+
+#perfilProfesor button {
+    float: right;
+    padding: 8px 12px;
+    margin: 8px 0 0;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid #78788c;
+    background: 0;
+    color: #5a5a6e;
+    cursor: pointer;
+    transition: all .3s
+}
+
+#perfilProfesor button:hover {
+    background: #78788c;
+    color: #fff
+}
+
+
+.tablaCursosProfesor table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.tablaCursosProfesor h2 {
+    text-align: center;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    color: yellowgreen;
+    margin-bottom: 20px;
+}
+
+.tablaCursosProfesor .tbl-header {
+    background-color: rgb(22, 20, 20);
+}
+
+.tablaCursosProfesor .tbl-content {
+    height: 200px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tablaCursosProfesor th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.tablaCursosProfesor td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.698);
+}
+
+.tablaCursosProfesor {
+    margin: 50px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+.tablaCursosProfesor ::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tablaCursosProfesor ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.tablaCursosProfesor ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}

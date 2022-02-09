@@ -48,6 +48,19 @@ export const verCurso = async (nombre) => {
 
     console.log(nombre+" "+arrayAsignaturas+" "+arrayAlumnos);
 }
+//Buscar asignatura.
+export const buscarAsignatura = async (asignatura) => {
+    const cursosLista = await getDocs(cursos);
+    cursosLista.docs.map((documento) => {
+        for (var i = 0; i < documento.data().asignaturas.length; i++){
+            if (documento.data().asignaturas[i] == asignatura){
+                d.getElementById(documento.data().asignaturas[i]).innerHTML = documento.data().nombre;
+            }
+        }
+        
+                
+    });
+}
 //Editar datos curso.
 export const editarCurso = async (nombre) =>{
     try{
