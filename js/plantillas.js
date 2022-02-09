@@ -263,7 +263,11 @@ export const pintarPerfilProfesor = () => {
                         </table>
                     </div>
                     <div class="tbl-content">
+<<<<<<< HEAD
                         <table cellpadding="0" cellspacing="0" border="0" id="tablaAsignaturas">
+=======
+                        <table cellpadding="0" cellspacing="0" border="0">
+>>>>>>> 3ec5247cf1c541345ad5d490c2369aabb591e8d3
                             <tbody>
                                 <tr>
                                     <td>AAC</td>
