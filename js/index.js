@@ -22,7 +22,6 @@ window.onload = () =>{
     d.getElementById("iniciarSesion").addEventListener("click", () =>{
         f.iniciarSesion(d.getElementById("emailS").value, d.getElementById("passS").value);
     });
-<<<<<<< HEAD
     /******** REGISTRO **********/
     //Como ya habrá información en la BBDD, al registrarse se completará ciertos valores y 
     //se comprobará que el usuario esté en la BBDD, para que no pueda registrarse cualquier persona.
@@ -31,10 +30,6 @@ window.onload = () =>{
         if (d.getElementById("maestro").checked) rol = 1;
         f.crearCuenta(d.getElementById("usuN").value,d.getElementById("emailN").value, d.getElementById("passN").value,rol);
     });
-=======
-
-
->>>>>>> 3ec5247cf1c541345ad5d490c2369aabb591e8d3
 
 
     /** INICIO --> Para profesores */

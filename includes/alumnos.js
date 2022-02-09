@@ -81,7 +81,6 @@ export const verAlumno = async (id) => {
     var fCreacion=alumno.docs[0].data().fCreacion;
 
     console.log(nombre+" "+apellidos+" "+email+" "+fCreacion);
-<<<<<<< HEAD
 }
 //Es un alumno.
 export const esAlumno = async (email) => {
@@ -94,8 +93,6 @@ export const esAlumno = async (email) => {
             console.log("No es un alumno.");
         }
     });
-=======
->>>>>>> 3ec5247cf1c541345ad5d490c2369aabb591e8d3
 }
 //Editar datos alumno.
 export const editarAlumno = async (id,nombre) =>{
