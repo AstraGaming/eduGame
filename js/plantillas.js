@@ -183,7 +183,7 @@ export const pintarJuegos = () => {
 
 export const pintarAlumnos = () => {
     return `
-        <section class="tablaAlumnos">
+        <section class="tablaAlumnos" id="alumnosProfesor">
             <div>
                 <h2>ALUMNOS</h2>
             </div>

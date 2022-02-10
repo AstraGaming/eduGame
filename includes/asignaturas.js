@@ -37,7 +37,29 @@ export const crearAsignatura = async (nombre, curso, alumnos, profesor) => {
     console.log(`Nueva asignatura creada con id ${listaAsig.id} en la colección`);
     location.reload();
 }
-//Datos del asignatura.
+//Datos de la asignatura para mostrar alumnos
+export const verAlumnos = async (profe, nombre) => {
+    const asignaturasLista = await getDocs(asignaturas);
+    asignaturasLista.docs.map((documento) => {
+        for (var i = 0; i < nombre.length; i++){
+            if(documento.data().nombre == nombre[i] && (documento.data().profesor == profe)){
+                d.getElementById("alumnosProfesor").innerHTML += "<h2 id='"+documento.data().nombre+"'></h3><h3>"+documento.data().nombre+"</h3>";
+                buscarAsignatura(documento.data().nombre);
+                console.log(documento.data().alumnos);
+                d.getElementById("alumnosProfesor").innerHTML += "<table><tr><th>Nombre</th><th>1er Apellido</th><th>2º Apellido</th></tr>";
+                for (var j = 0; j < documento.data().alumnos.length; j++){
+                    d.getElementById("alumnosProfesor").innerHTML += "<table><tr><td>"+documento.data().alumnos[j]+"</td><td></td><td></td></tr></table>";
+                }
+                d.getElementById("alumnosProfesor").innerHTML += "</table><br>";
+            }
+            else {
+                console.log("No hay asignaturas.");
+            }
+        }
+        
+    });
+}
+//Datos de la asignatura.
 export const verAsignatura = async (profe, nombre) => {
     const asignaturasLista = await getDocs(asignaturas);
     asignaturasLista.docs.map((documento) => {
@@ -51,7 +73,6 @@ export const verAsignatura = async (profe, nombre) => {
             }
         }
     });
-
 }
 //Editar datos asignatura.
 export const editarAsignatura = async (nombre) =>{
