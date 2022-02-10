@@ -68,6 +68,26 @@ export const crearAlumnoRegistro = async (email,pass) => {
         }
     });
 }
+//Crear alumno desde admin.
+export const crearAlumnoAdmin = async (nombre, ape1, ape2, email,rol) => {
+    const nuevoAlumno = {
+        nombre: nombre,
+        apellido1: ape1,
+        apellido2: ape2,
+        email: email,
+        rol: rol,
+    };
+
+    const listaAlum = await addDoc(alumnos, nuevoAlumno);
+    console.log(`Nuevo alumno creado con id ${listaAlum.id} en la lista`);
+}
+//Ver todo el alumnado.
+export const mostrarAlumnos = async () => {
+    const alumnosLista = await getDocs(alumnos);
+    alumnosLista.docs.map((documento) => {
+        d.getElementById("alumnado").innerHTML += "<tr id="+documento.data().id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td><td><input type='button' value='Editar' name='editar'></td><td><input type='button' value='Eliminar' name='eliminar'></td></tr>";
+    });
+}
 //Datos del alumno.
 export const verAlumno = async (id) => {
     const consulta = query(
@@ -81,6 +101,18 @@ export const verAlumno = async (id) => {
     var fCreacion=alumno.docs[0].data().fCreacion;
 
     console.log(nombre+" "+apellidos+" "+email+" "+fCreacion);
+}
+//Buscar alumno para mostrar en lista.
+export const buscarAlumno = async (id, idAsignatura) => {
+    const alumnosLista = await getDocs(alumnos);
+    alumnosLista.docs.map((documento) => {
+        if(documento.data().id == id){
+            d.getElementById(idAsignatura).innerHTML += "<tr class="+documento.data().id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td></tr>";
+        }
+        else {
+            console.log("No se encuentra al alumno para listar.");
+        }
+    });
 }
 //Es un alumno.
 export const esAlumno = async (email) => {

@@ -49,12 +49,12 @@ export const verCurso = async (nombre) => {
     console.log(nombre+" "+arrayAsignaturas+" "+arrayAlumnos);
 }
 //Buscar asignatura.
-export const buscarAsignatura = async (asignatura) => {
+export const buscarAsignatura = async (idAsignatura,sufijo) => {
     const cursosLista = await getDocs(cursos);
     cursosLista.docs.map((documento) => {
         for (var i = 0; i < documento.data().asignaturas.length; i++){
-            if (documento.data().asignaturas[i] == asignatura){
-                d.getElementById(documento.data().asignaturas[i]).innerHTML = documento.data().nombre;
+            if (documento.data().asignaturas[i] == idAsignatura){
+                d.getElementById(idAsignatura+sufijo).innerHTML = documento.data().nombre;
             }
         }
         

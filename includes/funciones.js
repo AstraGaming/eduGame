@@ -28,6 +28,7 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
+import { esAdmin } from "./admin.js";
 
 /** Conexión con la base de datos. **/
 const db = getFirestore(app);
@@ -56,8 +57,13 @@ export const crearCuenta = async (nombre,email,pass,rol) => {
 onAuthStateChanged(autentificacion, (usuario) => {
     if (usuario) {
         console.log("Iniciando sesión...");
-        prof.esProfesor(usuario.email);
-        alu.esAlumno(usuario.email);
+        if (usuario.email == "admin@edugame.com"){
+          esAdmin();
+        }
+        else{
+          prof.esProfesor(usuario.email);
+          alu.esAlumno(usuario.email);
+        }
     } else {
         console.log("Sesión no iniciada.");
     }
@@ -68,8 +74,14 @@ export const iniciarSesion = (usuario, contra) => {
     signInWithEmailAndPassword(autentificacion, usuario, contra)
       .then((credenciales) => {
         console.log("Iniciando sesión...");
-        prof.esProfesor(usuario);
-        alu.esAlumno(usuario);
+        if (usuario == "admin@edugame.com"){
+          esAdmin();
+        }
+        else{
+          prof.esProfesor(usuario);
+          alu.esAlumno(usuario);
+        }
+        
       })
       .catch((error) => {
         console.log("Error al iniciar sesión");

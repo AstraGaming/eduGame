@@ -52,6 +52,19 @@ export const crearProfesor = async (nombre, ape1, ape2, email, fecha, id, rol) =
     console.log(`Nuevo alumno creado con id ${listaProf.id} en la lista`);
     location.reload();
 }
+//Crear profesor desde admin.
+export const crearProfesorAdmin = async (nombre, ape1, ape2, email,rol) => {
+    const nuevoProfesor = {
+        nombre: nombre,
+        apellido1: ape1,
+        apellido2: ape2,
+        email: email,
+        rol: rol,
+    };
+
+    const listaProf = await addDoc(profesores, nuevoProfesor);
+    console.log(`Nuevo alumno creado con id ${listaProf.id} en la lista`);
+}
 //Buscar profesor y actualizar datos de registro, y crear usuario Auth.
 export const crearProfesorRegistro = async (email,pass) => {
     const profesoresLista = await getDocs(profesores);
@@ -84,6 +97,13 @@ export const verProfesor = async (id) => {
 
     console.log(nombre+" "+apellidos+" "+email+" "+fCreacion);
 }
+//Ver todo el profesorado.
+export const mostrarProfesores = async () => {
+    const profesoresLista = await getDocs(profesores);
+    profesoresLista.docs.map((documento) => {
+        d.getElementById("profesorado").innerHTML += "<tr id="+documento.data().id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td><td><input type='button' value='Editar' name='editar'></td><td><input type='button' value='Eliminar' name='eliminar'></td></tr>";
+    });
+}
 // Es profesor.
 export const esProfesor = async (email) => {
     const profesoresLista = await getDocs(profesores);
@@ -100,12 +120,14 @@ export const esProfesor = async (email) => {
 }
 
 //Editar datos profesor.
-export const editarProfesor = async (id,nombre) =>{
+export const editarProfesor = async (id,nombre,ape1,ape2) =>{
     try{
         const profesor = await doc(profesores, id);
         await updateDoc(profesor, {
-          nombre: nombre,
-        });
+            nombre: nombre,
+            apellido1: ape1,
+            apellido2: ape2
+          });
         
     }
     catch{

@@ -243,12 +243,16 @@ export const pintarAlumnos = () => {
 export const pintarPerfilProfesor = () => {
     return `
             <div id="perfilProfesor">
-                <form class="form">
+                <div class="form">
+                    <input type="text" value="" id="idProf" hidden>
                     <p>Nombre: <input type="text" value="Pepito" id="nombre" disabled></p>
                     <p>Primer apellido: <input type="text" value="Reig" id="apellido1" disabled></input></p>
                     <p>Segundo apellido: <input type="text" value="Alejo" id="apellido2" disabled></input></p>
                     <p>Email: <input type="text" value="pepitoreig.alu@iespacomolla.es" id="email" disabled></input></p>
-                </form>
+                    <button id='editarDatosConf' hidden>Confirmar</button>
+                    <button id='editarDatos'>Editar</button>
+                    </div>
+                    
 
                 <section class="tablaCursosProfesor">
                     <h2>Asignaturas</h2>
@@ -330,7 +334,7 @@ export const pintarAlumnosAdmi = () => {
                 </table>
             </div>
             <div class="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="0">
+                <table cellpadding="0" cellspacing="0" border="0" id="alumnado">
                     <tbody>
                     <tr>
                         <td>AAC</td>
@@ -383,7 +387,7 @@ export const pintarProfesoresAdmi = () => {
                 </table>
             </div>
             <div class="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="0">
+                <table cellpadding="0" cellspacing="0" border="0" id="profesorado">
                     <tbody>
                     <tr>
                         <td>AAC</td>
@@ -427,14 +431,17 @@ export const pintarFormuAnadirUsuario = () => {
                         <input class="form-input" type="text" placeholder="Primer apellido..." id="apellido1" name="apellido1" required>
                         <br>
                         <input class="form-input" type="text" placeholder="Segundo apellido..." id="apellido2" name="apellido2" required>
-                        <br><br>
+                        <br>
+                        <input class="form-input" type="text" placeholder="Email..." id="email" name="email" required>
+                        <br>
+                        <br>
                         <label for="maestro">Maestro:</label>
-                        <input type="checkbox" name="maestro" value="maestro" >
+                        <input id='esMaestro' type="checkbox" name="maestro" value="maestro" >
                         <br>
                     </div>
                     <div class="other">
                         <button class="btn submits frgt-pass">¿Está todo correcto?   </button>
-                        <button class="btn submits sign-up">Añadir usuario
+                        <button id='anadirUsuarioNuevo' class="btn submits sign-up">Añadir usuario
                             <i class="fa fa-user-plus" aria-hidden="true"></i>
                         </button>
                     </div>

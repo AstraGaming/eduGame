@@ -20,6 +20,7 @@ import {
     deleteField,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
 import { buscarAsignatura } from "./cursos.js";
+import { buscarAlumno } from "./alumnos.js";
 /** Conexión con la base de datos. **/
 const db = getFirestore(app);
 var d = document;
@@ -42,13 +43,13 @@ export const verAlumnos = async (profe, nombre) => {
     const asignaturasLista = await getDocs(asignaturas);
     asignaturasLista.docs.map((documento) => {
         for (var i = 0; i < nombre.length; i++){
-            if(documento.data().nombre == nombre[i] && (documento.data().profesor == profe)){
-                d.getElementById("alumnosProfesor").innerHTML += "<h2 id='"+documento.data().nombre+"'></h3><h3>"+documento.data().nombre+"</h3>";
-                buscarAsignatura(documento.data().nombre);
-                console.log(documento.data().alumnos);
-                d.getElementById("alumnosProfesor").innerHTML += "<table><tr><th>Nombre</th><th>1er Apellido</th><th>2º Apellido</th></tr>";
+            if(documento.data().id == nombre[i] && (documento.data().profesor == profe)){
+                d.getElementById("alumnosProfesor").innerHTML += "<h2 id='"+documento.data().id+"Curso'></h3><h3>"+documento.data().nombre+"</h3>";
+                buscarAsignatura(documento.data().id,"Curso");
+                d.getElementById("alumnosProfesor").innerHTML += "<table id='"+documento.data().id+"'><tr><th>Nombre</th><th>1er Apellido</th><th>2º Apellido</th></tr>";
                 for (var j = 0; j < documento.data().alumnos.length; j++){
-                    d.getElementById("alumnosProfesor").innerHTML += "<table><tr><td>"+documento.data().alumnos[j]+"</td><td></td><td></td></tr></table>";
+                    console.log(documento.data().alumnos[j]);
+                    buscarAlumno(documento.data().alumnos[j],documento.data().id);
                 }
                 d.getElementById("alumnosProfesor").innerHTML += "</table><br>";
             }
@@ -60,13 +61,13 @@ export const verAlumnos = async (profe, nombre) => {
     });
 }
 //Datos de la asignatura.
-export const verAsignatura = async (profe, nombre) => {
+export const verAsignatura = async (idProfe, nombre) => {
     const asignaturasLista = await getDocs(asignaturas);
     asignaturasLista.docs.map((documento) => {
         for (var i = 0; i < nombre.length; i++){
-            if(documento.data().nombre == nombre[i] && (documento.data().profesor == profe)){
-                d.getElementById("tablaAsignaturas").innerHTML += "<tr><td id='"+documento.data().nombre+"'></td><td>"+documento.data().nombre+"</td></tr>";
-                buscarAsignatura(documento.data().nombre);
+            if(documento.data().id == nombre[i] && (documento.data().profesor == idProfe)){
+                d.getElementById("tablaAsignaturas").innerHTML += "<tr><td id='"+documento.data().id+"Curso'></td><td>"+documento.data().nombre+"</td></tr>";
+                buscarAsignatura(documento.data().id,"Curso");
             }
             else {
                 console.log("No hay asignaturas.");
