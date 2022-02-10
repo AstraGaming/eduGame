@@ -10,41 +10,30 @@ import * as prof from "../includes/profesores.js"
 
 var d = document;
 
-window.onload = () =>{
+window.onload = () => {
 
-    // Pintamos y activamos el dinamismo del login --> Importante activarlo cada vez que pintemos el login (¡Son inseparables!).
-    login.pintar(plantillas);
+    d.getElementById("header").innerHTML = plantillas.pintarMenuPrincipal();
 
+    d.getElementById("contenido").innerHTML = plantillas.pintarPaginaPrincipal();
 
+    d.getElementById("footer").innerHTML = plantillas.pintarFooter();
 
-    /******* INICIAR SESIÓN **********/
-    //Evento onclick para el botón "Iniciar" de la parte de Iniciar sesión.
-    d.getElementById("iniciarSesion").addEventListener("click", () =>{
-        f.iniciarSesion(d.getElementById("emailS").value, d.getElementById("passS").value);
+    d.getElementById("acceder").addEventListener("click", () => {
+        login.pintar(plantillas);
+
+        /******* INICIAR SESIÓN **********/
+        //Evento onclick para el botón "Iniciar" de la parte de Iniciar sesión.
+        d.getElementById("iniciarSesion").addEventListener("click", () => {
+            f.iniciarSesion(d.getElementById("emailS").value, d.getElementById("passS").value);
+        });
+        /******** REGISTRO **********/
+        //Como ya habrá información en la BBDD, al registrarse se completará ciertos valores y 
+        //se comprobará que el usuario esté en la BBDD, para que no pueda registrarse cualquier persona.
+        d.getElementById("crearCuenta").addEventListener("click", () => {
+            var rol = 0;
+            if (d.getElementById("maestro").checked) rol = 1;
+            f.crearCuenta(d.getElementById("usuN").value, d.getElementById("emailN").value, d.getElementById("passN").value, rol);
+        });
     });
-    /******** REGISTRO **********/
-    //Como ya habrá información en la BBDD, al registrarse se completará ciertos valores y 
-    //se comprobará que el usuario esté en la BBDD, para que no pueda registrarse cualquier persona.
-    d.getElementById("crearCuenta").addEventListener("click", () => {
-        var rol = 0;
-        if (d.getElementById("maestro").checked) rol = 1;
-        f.crearCuenta(d.getElementById("usuN").value,d.getElementById("emailN").value, d.getElementById("passN").value,rol);
-    });
 
-
-    /** INICIO --> Para profesores */
-        /** Activamos el menú. */
-        //profesor.pintarMenu(plantillas);
-
-        /** Cargamos los juegos. */
-        //d.getElementById("contenido").innerHTML = plantillas.pintarJuegos();
-
-        /** Pintamos el pie de página. */
-        //d.getElementById("footer").innerHTML = plantillas.pintarFooter();
-    /** FIN --> Para profesores */
-
-    /** INICIO --> Para admi */
-        /** Se activa su menú. */
-        //admi.pintarMenu(plantillas);
-    /** FIN --> Para admi */
 };

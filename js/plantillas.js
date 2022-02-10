@@ -478,6 +478,8 @@ export const pintarFormuEditarUsuario = () => {
 };
 /** FIN ADMI */
 
+
+// Mensaje de mantenimiento
 export const mantenimiento = () => {
     return `
             <div class="mantenimiento">
@@ -488,3 +490,99 @@ export const mantenimiento = () => {
             </div>
     `;
 };
+
+// Página principal desde dónde acceder.
+export const pintarMenuLogin = () => {
+    return `
+            <div id="menu">
+                <img src="./assets/img/logos/logo.png" alt="EduGame">    
+
+                <label for="toggle-1" class="toggle-menu">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </label>
+                <input type="checkbox" id="toggle-1">
+
+                <nav>
+                    <ul>
+                        <li id="volver"><a>Volver</a></li>
+                    </ul>
+                </nav>
+            </div>
+`;
+};
+
+export const pintarMenuPrincipal = () => {
+    return `
+            <div id="menu">
+                <img src="./assets/img/logos/logo.png" alt="EduGame">    
+
+                <label for="toggle-1" class="toggle-menu">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </label>
+                <input type="checkbox" id="toggle-1">
+
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#juegos">Juegos</a></li>
+                        <li><a href="#equipo">Equipo</a></li>
+                        <li><a href="#footer">+ Información</a></li>
+                        <li id="acceder"><a>Acceder</a></li>
+                    </ul>
+                </nav>
+            </div>
+    `;
+};
+
+export const pintarPaginaPrincipal = () => {
+    return `
+            <div id="inicio">
+                <h1>Bienvenido a <span class="name1">Edu</span><span class="name2">Game</span></h1>
+                <h4>Diviertete y aprende con esta herramienta educativa</h4>
+            </div>
+            <div id="juegos">
+                <div class="containerJuegos">
+                    <h2 class="text-center">JUEGOS</h2>
+                    <div class="lightbox-gallery">
+                        <div class="containerJuego" id="wordle">
+                            <img src="./assets/img/portfolio/1.jpg" data-image-hd="https://picsum.photos/id/343/600/600"
+                                alt="Juego: Wordle">
+                            <h4>Wordle</h4>
+                            <p>Adivina la palabra</p>
+                        </div>
+                        <div class="containerJuego" id="akinator">
+                            <img src="./assets/img/portfolio/2.jpg" data-image-hd="https://picsum.photos/id/112/600/600"
+                                alt="Juego: Akinator">
+                            <h4>Akinator</h4>
+                            <p>Próximamente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contenedorEquipo">
+                <h2 class="titEquipo">Nuestro equipo</h2>
+                <div id="equipo">
+                    <div class="team">
+                        <img src="./assets/img/team/1.jpg" alt="Pablo Tomás">
+                        <h3>Pablo Tomás</h3>
+                        <p>Desarrollador Web</p>
+                    </div>
+                    <div class="team">
+                        <img src="./assets/img/team/2.jpg" alt="Virginia Campayo">
+                        <h3>Virginia Campayo</h3>
+                        <p>Desarrolladora Web</p>
+                    </div>
+                </div>
+            </div>
+    `;
+};
+
+/** Fin página principal. */
