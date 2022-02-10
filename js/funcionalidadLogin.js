@@ -1,12 +1,7 @@
 "use strict";
 var d = document;
 
-export const pintar = (plantillas) => {
-    d.getElementById("contenido").innerHTML = plantillas.pintarLogin();
-    activarFuncLogin();
-};
-
-const activarFuncLogin = () => {
+export const activarFuncLogin = () => {
     var loginMsg = d.getElementsByClassName("loginMsg")[0],
         login = d.getElementsByClassName("login")[0],
         signupMsg = d.getElementsByClassName("signupMsg")[0],
