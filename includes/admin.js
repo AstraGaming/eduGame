@@ -6,6 +6,6 @@ var d = document;
 
 export const esAdmin = async () => {
     admin.pintarMenu(pintar);
-    d.getElementById("contenido").innerHTML = pintar.pintarJuegos();
+    admin.cargarProfesores(pintar);
     d.getElementById("footer").innerHTML = pintar.pintarFooter();
 }

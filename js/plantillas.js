@@ -477,3 +477,14 @@ export const pintarFormuEditarUsuario = () => {
     `;
 };
 /** FIN ADMI */
+
+export const mantenimiento = () => {
+    return `
+            <div class="mantenimiento">
+                <h1>En construcción</h1>
+                <p>Lo sentimos, no hemos encontrado un mensaje más original para decirte que estamos trabajando en ello.</p>
+                <h2>Disponible en:</h2>
+                <p class="casio" id="reloj">Junio</p>
+            </div>
+    `;
+};

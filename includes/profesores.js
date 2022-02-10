@@ -111,6 +111,13 @@ export const esProfesor = async (email) => {
         if(documento.data().email == email){
             profe.pintarMenu(pintar,documento.data());
             d.getElementById("contenido").innerHTML = pintar.pintarJuegos();
+            d.getElementById("wordle").addEventListener("click", () => {
+                d.getElementById("contenido").innerHTML = pintar.mantenimiento();
+            }, false);
+             // Juego akinator sin implementar.
+            d.getElementById("akinator").addEventListener("click", () => {
+                d.getElementById("contenido").innerHTML = pintar.mantenimiento();
+            }, false);
             d.getElementById("footer").innerHTML = pintar.pintarFooter();
         }
         else {

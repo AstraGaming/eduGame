@@ -21,7 +21,7 @@ export const pintarMenu = (plantillas) => {
 
     /** Muestra las asignaturas. */
     d.getElementById("asignaturas").addEventListener("click", () => {
-        cargarAsignaturas(plantillas);
+        d.getElementById("contenido").innerHTML = plantillas.mantenimiento();
     }, false);
 
     /** Te lleva a cerrar la sesión de admi. */
@@ -35,7 +35,7 @@ export const pintarMenu = (plantillas) => {
 };
 
 
-const cargarProfesores = (plantillas) => {
+export const cargarProfesores = (plantillas) => {
     d.getElementById("contenido").innerHTML = plantillas.pintarProfesoresAdmi();
 
     d.getElementById("profesorado").innerHTML = "";
