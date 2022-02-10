@@ -99,9 +99,52 @@ export const verProfesor = async (id) => {
 }
 //Ver todo el profesorado.
 export const mostrarProfesores = async () => {
+    d.getElementById("contenido").innerHTML = pintar.pintarProfesoresAdmi();
+    d.getElementById("profesorado").innerHTML = "";
     const profesoresLista = await getDocs(profesores);
     profesoresLista.docs.map((documento) => {
         d.getElementById("profesorado").innerHTML += "<tr id="+documento.data().id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td><td><input type='button' value='Editar' name='editar'></td><td><input type='button' value='Eliminar' name='eliminar'></td></tr>";
+    });
+
+    d.getElementById("anadir").addEventListener("click", () => {
+        d.getElementById("contenido").innerHTML = pintar.pintarFormuAnadirUsuario();
+
+        d.getElementById("anadirUsuarioNuevo").addEventListener("click", () => {
+            if(d.getElementById("esMaestro").checked){
+                console.log("si");
+                var rol = 1;
+                console.log(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
+                crearProfesorAdmin(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
+            }
+            else {
+                var rol = 0;
+                console.log("no");
+                console.log(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
+                crearAlumnoAdmin(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
+            }
+        }, false);
+    }, false);
+
+    
+    var botonesEditar = d.getElementsByName("editar");
+    var botonesEliminar = d.getElementsByName("eliminar");
+
+    botonesEditar.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            d.getElementById("contenido").innerHTML = pintar.pintarFormuEditarUsuario();
+        });
+    });
+
+    botonesEliminar.forEach((boton) => {
+        var idProfesor = boton.parentNode.parentNode.id;
+        var nombreProfesor = boton.parentNode.parentNode.firstChild.innerText;
+        boton.addEventListener("click", () => {
+            d.getElementById("contenido").innerHTML = pintar.pintarConfirmarEliminar(nombreProfesor);
+            d.getElementById("confirmarEliminar").addEventListener("click", () => {
+                eliminarProfesor(idProfesor);
+                mostrarProfesores();
+            });
+        });
     });
 }
 // Es profesor.
@@ -141,4 +184,14 @@ export const editarProfesor = async (id,nombre,ape1,ape2) =>{
         console.log("Ha habido algún error al editar.")
     }
         
+}
+
+// Eliminar profesor.
+export const eliminarProfesor = async (id) => {
+    try{
+        await deleteDoc(doc(profesores, id));
+    }
+    catch{
+        console.log("Ha habido un problema al intentar eliminar el profesor.");
+    }
 }

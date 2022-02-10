@@ -301,10 +301,10 @@ export const pintarConfirmarCerrarSesion = () => {
 
 
 /** ADMI */
-export const pintarConfirmarEliminar = () => {
+export const pintarConfirmarEliminar = (nombre) => {
     return `
             <div id="cSes">
-                <h1>¿Seguro que quieres eliminar a ++++?</h1>
+                <h1>¿Seguro que quieres eliminar a ${nombre}?</h1>
                 
                 <a id="confirmarEliminar" class="button">Confirmar</a>
             </div>
@@ -336,27 +336,6 @@ export const pintarAlumnosAdmi = () => {
             <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0" id="alumnado">
                     <tbody>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY </td>
-                        <td>$1.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -389,27 +368,6 @@ export const pintarProfesoresAdmi = () => {
             <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0" id="profesorado">
                     <tbody>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY </td>
-                        <td>$1.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
