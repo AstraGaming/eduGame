@@ -33,10 +33,10 @@ const activarFuncLogin = () => {
     })
 
     setTimeout(function () {
-        d.getElementById("switch1").click()
+        d.getElementById("switch1").click();
     }, 1000)
 
     setTimeout(function () {
-        d.getElementById("switch2").click()
+        d.getElementById("switch2").click();
     }, 3000)
 };

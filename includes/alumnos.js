@@ -82,10 +82,37 @@ export const crearAlumnoAdmin = async (nombre, ape1, ape2, email,rol) => {
     console.log(`Nuevo alumno creado con id ${listaAlum.id} en la lista`);
 }
 //Ver todo el alumnado.
-export const mostrarAlumnos = async () => {
+export const mostrarAlumnosAdmi = async () => {
+    d.getElementById("contenido").innerHTML = pintar.pintarAlumnosAdmi();
+    d.getElementById("alumnado").innerHTML = "";
     const alumnosLista = await getDocs(alumnos);
     alumnosLista.docs.map((documento) => {
         d.getElementById("alumnado").innerHTML += "<tr id="+documento.data().id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td><td><input type='button' value='Editar' name='editar'></td><td><input type='button' value='Eliminar' name='eliminar'></td></tr>";
+    });
+
+    d.getElementById("anadir").addEventListener("click", () => {
+        d.getElementById("contenido").innerHTML = pintar.pintarFormuAnadirUsuario();
+    }, false);
+
+    var botonesEditar = d.getElementsByName("editar");
+    var botonesEliminar = d.getElementsByName("eliminar");
+
+    botonesEditar.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            d.getElementById("contenido").innerHTML = pintar.pintarFormuEditarUsuario();
+        });
+    });
+
+    botonesEliminar.forEach((boton) => {
+        boton.addEventListener("click", () => {
+            var idAlumno = boton.parentNode.parentNode.id;
+            var nombreAlumno = boton.parentNode.parentNode.firstChild.innerText;
+            d.getElementById("contenido").innerHTML = pintar.pintarConfirmarEliminar(nombreAlumno);
+            d.getElementById("confirmarEliminar").addEventListener("click", () => {
+                eliminarAlumno(idAlumno);
+                mostrarAlumnosAdmi();
+            });
+        });
     });
 }
 //Datos del alumno.
@@ -141,3 +168,14 @@ export const editarAlumno = async (id,nombre) =>{
     }
         
 }
+
+// Eliminar alumno.
+const eliminarAlumno = async (id) => {
+    try{
+        await deleteDoc(doc(alumnos, id));  
+        console.log("Alumno eliminado con éxito.");     
+    }
+    catch{
+        console.log("Ha habido algún error al intentar eliminar el alumno.")
+    }
+};
