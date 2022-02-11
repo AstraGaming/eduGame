@@ -32,11 +32,7 @@ window.onload = () => {
         d.getElementById("crearCuenta").addEventListener("click", () => {
             var rol = 0;
             if (d.getElementById("maestro").checked) rol = 1;
-<<<<<<< HEAD
             f.crearCuenta(d.getElementById("usuN").value, d.getElementById("ape1N").value, d.getElementById("ape2N").value, d.getElementById("emailN").value, d.getElementById("passN").value, rol);
-=======
-            f.crearCuenta(d.getElementById("usuN").value, d.getElementById("emailN").value, d.getElementById("passN").value, rol);
->>>>>>> 1b51ed4ec7ca9b28c246a4f9571f3ede516ba30b
         });
     });
 
