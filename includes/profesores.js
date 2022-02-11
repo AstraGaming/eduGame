@@ -182,7 +182,7 @@ export const editarProfesor = async (id,nombre,ape1,ape2) =>{
             apellido1: ape1,
             apellido2: ape2
           });
-        
+        location.reload();
     }
     catch{
         console.log("Ha habido algún error al editar.")
@@ -209,7 +209,7 @@ export const actualizarProfesor = async (id, nombreR, ape1, ape2) => {
           apellido1: ape1,
           apellido2: ape2,
         });
-        location.reload();
+        
     }
     catch{
         console.log("Ha habido un problema al intentar editar el profesor.");
