@@ -375,12 +375,12 @@ export const pintarProfesoresAdmi = () => {
     `;
 };
 
-export const pintarFormuAnadirUsuario = () => {
+export const pintarFormuAnadirUsuario = (tipo) => {
     return `
             <form id="formuAnadir">
                 <div class="con">
                     <header class="head-form">
-                        <h2>Anadir profesor/alumno</h2>
+                        <h2>Anadir ${tipo}</h2>
                     </header>
                     <br>
                     <div class="field-set">
@@ -391,10 +391,6 @@ export const pintarFormuAnadirUsuario = () => {
                         <input class="form-input" type="text" placeholder="Segundo apellido..." id="apellido2" name="apellido2" required>
                         <br>
                         <input class="form-input" type="text" placeholder="Email..." id="email" name="email" required>
-                        <br>
-                        <br>
-                        <label for="maestro">Maestro:</label>
-                        <input id='esMaestro' type="checkbox" name="maestro" value="maestro" >
                         <br>
                     </div>
                     <div class="other">
@@ -444,7 +440,7 @@ export const mantenimiento = () => {
                 <h1>En construcción</h1>
                 <p>Lo sentimos, no hemos encontrado un mensaje más original para decirte que estamos trabajando en ello.</p>
                 <h2>Disponible en:</h2>
-                <p class="casio" id="reloj">Junio</p>
+                <p class="casio" id="reloj">Junio (o antes)</p>
             </div>
     `;
 };

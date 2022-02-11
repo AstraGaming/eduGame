@@ -35,20 +35,23 @@ const alumnos = collection(db, "alumnos");
 
 //Crear dato en la lista alumnos.
 /* LO DEJAREMOS PARA LA PARTE DE ADMIN */
-export const crearAlumno = async (nombre, ape1, ape2, email, fecha, id, rol) => {
+export const crearAlumnoAdmi = async (nombreR, ape1, ape2, emailR) => {
+    /** Obtenemos la fecha y hora actuales al crear el profesor. */
+    var hoy = new Date();
+    var fecha = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+    var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+
     const nuevoAlumno = {
-        nombre: nombre,
+        nombre: nombreR,
         apellido1: ape1,
         apellido2: ape2,
-        email: email,
-        fCreacion: fecha,
-        rol: rol,
-        id: id,
+        email: emailR,
+        fCreacion: fecha + ' ' + hora,
+        rol: 0,
     };
 
-    const listaAlu = await addDoc(alumnos, nuevoAlumno);
-    console.log(`Nuevo alumno creado con id ${listaAlu.id} en la lista`);
-    location.reload();
+    guardarAlumno(nuevoAlumno);
+    mostrarAlumnos();
 }
 //Buscar alumno y actualizar datos de registro, y creamos la cuenta en Auth.
 export const crearAlumnoRegistro = async (email,pass) => {
@@ -68,43 +71,27 @@ export const crearAlumnoRegistro = async (email,pass) => {
         }
     });
 }
-//Crear alumno desde admin.
-export const crearAlumnoAdmin = async (nombre, ape1, ape2, email,rol) => {
-    const nuevoAlumno = {
-        nombre: nombre,
-        apellido1: ape1,
-        apellido2: ape2,
-        email: email,
-        rol: rol,
-    };
-
-    const listaAlum = await addDoc(alumnos, nuevoAlumno);
-    console.log(`Nuevo alumno creado con id ${listaAlum.id} en la lista`);
-}
 //Ver todo el alumnado.
 export const mostrarAlumnos = async () => {
     d.getElementById("contenido").innerHTML = pintar.pintarAlumnosAdmi();
     d.getElementById("alumnado").innerHTML = "";
     const alumnosLista = await getDocs(alumnos);
     alumnosLista.docs.map((documento) => {
-        d.getElementById("alumnado").innerHTML += "<tr id="+documento.data().id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td><td><input type='button' value='Editar' name='editar'></td><td><input type='button' value='Eliminar' name='eliminar'></td></tr>";
+        d.getElementById("alumnado").innerHTML += "<tr id="+documento.id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td><td><input type='button' value='Editar' name='editar'></td><td><input type='button' value='Eliminar' name='eliminar'></td></tr>";
     });
 
     d.getElementById("anadir").addEventListener("click", () => {
-        d.getElementById("contenido").innerHTML = pintar.pintarFormuAnadirUsuario();
+        d.getElementById("contenido").innerHTML = pintar.pintarFormuAnadirUsuario("alumno");
 
         d.getElementById("anadirUsuarioNuevo").addEventListener("click", () => {
-            if(d.getElementById("esMaestro").checked){
-                console.log("si");
-                var rol = 1;
-                console.log(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
-                crearProfesorAdmin(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
-            }
-            else {
-                var rol = 0;
-                console.log("no");
-                console.log(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
-                crearAlumnoAdmin(d.getElementById("nombreUsu").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value,d.getElementById("email").value,rol);
+            var nombre = d.getElementById("nombreUsu").value;
+            var apellido1 = d.getElementById("apellido1").value;
+            var apellido2 = d.getElementById("apellido2").value;
+            var email = d.getElementById("email").value;
+            if( nombre == "" || apellido1 == "" || apellido2 == "" || email == ""){
+                console.log("Error, algún campo está vacío.");
+            }else{
+                crearAlumnoAdmi(nombre, apellido1, apellido2, email);
             }
         }, false);
     }, false);
@@ -184,6 +171,15 @@ export const editarAlumno = async (id,nombre) =>{
     }
         
 }
+// Añadir alumno.
+export const guardarAlumno = async (alumno) => {
+    try{
+        await addDoc(alumnos, alumno);
+    }
+    catch{
+        console.log("Ha habido un problema al intentar añadir el alumno.");
+    }
+};
 
 // Eliminar alumno.
 export const eliminarAlumno = async (id) => {

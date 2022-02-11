@@ -1,8 +1,8 @@
 "use strcit";
 var d = document;
-import { crearAlumnoAdmin, mostrarAlumnos } from "../includes/alumnos.js";
+import { crearAlumnoAdmi, mostrarAlumnos } from "../includes/alumnos.js";
 import * as f from "../includes/funciones.js";
-import { crearProfesorAdmin, mostrarProfesores } from "../includes/profesores.js";
+import { crearProfesorAdmi, mostrarProfesores } from "../includes/profesores.js";
 
 export const pintarMenu = (plantillas) => {
     d.getElementById("header").innerHTML = plantillas.pintarMenuAdmi();
