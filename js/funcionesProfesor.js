@@ -46,6 +46,7 @@ export const pintarMenu = (plantillas, profesor) => {
                 d.getElementById("nombre").setAttribute("disabled","true");
                 d.getElementById("apellido1").setAttribute("disabled","true");
                 d.getElementById("apellido2").setAttribute("disabled","true");
+                location.reload();
             },false);
         },false);
         //Asignaturas
