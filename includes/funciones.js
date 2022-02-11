@@ -1,6 +1,7 @@
 "use strict";
 import * as alu from "./alumnos.js";
 import * as prof from "./profesores.js";
+import { esAdmin } from "./admin.js";
 
 import {app, autentificacion} from "../js/datosConexion.js";
 import {
@@ -28,7 +29,6 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-import { esAdmin } from "./admin.js";
 
 /** Conexión con la base de datos. **/
 const db = getFirestore(app);
@@ -39,16 +39,17 @@ const alumnos = collection(db, "alumnos");
 const profesores = collection(db, "profesores");
 
 //Función para la creación de las cuentas.
-export const crearCuenta = async (nombre,email,pass,rol) => {
+export const crearCuenta = async (nombre, ape1, ape2, email, pass, rol) => {
     //Rol será 0 para alumno y 1 para profesor
             //Actualizaremos los datos de la BBDD con los nuevos datos, si es preciso.
             if(rol == 1){
                 //Si es profesor con rol 1.
-                prof.crearProfesorRegistro(email,pass);
+                console.log(nombre, ape1, ape2, email,pass);
+                prof.crearProfesorRegistro(nombre, ape1, ape2, email,pass);
             }
             else {
                 //Si es alumno con rol 0.
-                alu.crearAlumnoRegistro(email,pass);
+                alu.crearAlumnoRegistro(nombre, ape1, ape2, email,pass);
             }
             
           

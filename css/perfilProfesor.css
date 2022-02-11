@@ -1,5 +1,5 @@
 #perfilProfesor .form {
-    width: 25%;
+    width: 400px;
     height: 440px;
     background: #e6e6e6;
     border-radius: 8px;
@@ -12,6 +12,13 @@
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     position: relative
+}
+
+@media only screen and (max-width: 600px) {
+    #perfilProfesor .form {
+        margin-left: 50px;
+        max-width: 80%;
+    }
 }
 
 #perfilProfesor input {

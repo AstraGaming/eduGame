@@ -9,6 +9,14 @@ export const pintarMenu = (plantillas, profesor) => {
 
     d.getElementById("juegos").addEventListener("click", () => {
         d.getElementById("contenido").innerHTML = plantillas.pintarJuegos();
+        // Juego wordle sin implementar.
+        d.getElementById("wordle").addEventListener("click", () => {
+            d.getElementById("contenido").innerHTML = plantillas.mantenimiento();
+        }, false);
+         // Juego akinator sin implementar.
+        d.getElementById("akinator").addEventListener("click", () => {
+            d.getElementById("contenido").innerHTML = plantillas.mantenimiento();
+        }, false);
     }, false);
 
     d.getElementById("alumnos").addEventListener("click", () => {

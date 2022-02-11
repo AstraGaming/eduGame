@@ -35,6 +35,8 @@ export const pintarLogin = () => {
                         <h2>Crear cuenta</h2>
                         <div class="inputbox">
                             <input type="text" name="fullname" placeholder="    NOMBRE DE USUARIO" id="usuN">
+                            <input type="text" name="apellido1" placeholder="    PRIMER APELLIDO" id="ape1N">
+                            <input type="text" name="apellido2" placeholder="    SEGUNDO APELLIDO" id="ape2N">
                             <input type="text" name="email" placeholder="   EMAIL" id="emailN">
                             <input type="password" name="password" placeholder="    CONTRASEÑA" id="passN">
                             <p>
@@ -301,10 +303,10 @@ export const pintarConfirmarCerrarSesion = () => {
 
 
 /** ADMI */
-export const pintarConfirmarEliminar = () => {
+export const pintarConfirmarEliminar = (nombre) => {
     return `
             <div id="cSes">
-                <h1>¿Seguro que quieres eliminar a ++++?</h1>
+                <h1>¿Seguro que quieres eliminar a ${nombre}?</h1>
                 
                 <a id="confirmarEliminar" class="button">Confirmar</a>
             </div>
@@ -336,27 +338,6 @@ export const pintarAlumnosAdmi = () => {
             <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0" id="alumnado">
                     <tbody>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY </td>
-                        <td>$1.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -389,27 +370,6 @@ export const pintarProfesoresAdmi = () => {
             <div class="tbl-content">
                 <table cellpadding="0" cellspacing="0" border="0" id="profesorado">
                     <tbody>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY </td>
-                        <td>$1.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td><input type="button" value="Editar" name="editar"></td>
-                        <td><input type="button" value="Eliminar" name="eliminar"></td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -417,12 +377,12 @@ export const pintarProfesoresAdmi = () => {
     `;
 };
 
-export const pintarFormuAnadirUsuario = () => {
+export const pintarFormuAnadirUsuario = (tipo) => {
     return `
             <form id="formuAnadir">
                 <div class="con">
                     <header class="head-form">
-                        <h2>Anadir profesor/alumno</h2>
+                        <h2>Anadir ${tipo}</h2>
                     </header>
                     <br>
                     <div class="field-set">
@@ -433,10 +393,6 @@ export const pintarFormuAnadirUsuario = () => {
                         <input class="form-input" type="text" placeholder="Segundo apellido..." id="apellido2" name="apellido2" required>
                         <br>
                         <input class="form-input" type="text" placeholder="Email..." id="email" name="email" required>
-                        <br>
-                        <br>
-                        <label for="maestro">Maestro:</label>
-                        <input id='esMaestro' type="checkbox" name="maestro" value="maestro" >
                         <br>
                     </div>
                     <div class="other">
@@ -450,25 +406,25 @@ export const pintarFormuAnadirUsuario = () => {
     `;
 };
 
-export const pintarFormuEditarUsuario = () => {
+export const pintarFormuEditarUsuario = (tipo, nombre, ape1, ape2) => {
     return `
             <form id="formuAnadir">
                 <div class="con">
                     <header class="head-form">
-                        <h2>Editar profesor/alumno</h2>
+                        <h2>Editar ${tipo}</h2>
                     </header>
                     <br>
                     <div class="field-set">
-                        <input class="form-input" id="nombreUsu" type="text" placeholder="Nombre" required>
+                        <input class="form-input" id="nombreUsu" type="text" value="${nombre}" required>
                         <br>
-                        <input class="form-input" type="text" placeholder="Primer apellido..." id="apellido1" name="apellido1" required>
+                        <input class="form-input" type="text" value="${ape1}" id="apellido1" name="apellido1" required>
                         <br>
-                        <input class="form-input" type="text" placeholder="Segundo apellido..." id="apellido2" name="apellido2" required>
+                        <input class="form-input" type="text" value="${ape2}" id="apellido2" name="apellido2" required>
                         <br><br>
                     </div>
                     <div class="other">
                         <button class="btn submits frgt-pass">¿Está todo correcto?   </button>
-                        <button class="btn submits sign-up">Editar usuario
+                        <button class="btn submits sign-up" id="editarUsu">Editar usuario
                             <i class="fa fa-user-plus" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -477,3 +433,112 @@ export const pintarFormuEditarUsuario = () => {
     `;
 };
 /** FIN ADMI */
+
+
+// Mensaje de mantenimiento
+export const mantenimiento = () => {
+    return `
+            <div class="mantenimiento">
+                <h1>En construcción</h1>
+                <p>Lo sentimos, no hemos encontrado un mensaje más original para decirte que estamos trabajando en ello.</p>
+                <h2>Disponible en:</h2>
+                <p class="casio" id="reloj">Junio (o antes)</p>
+            </div>
+    `;
+};
+
+// Página principal desde dónde acceder.
+export const pintarMenuLogin = () => {
+    return `
+            <div id="menu">
+                <img src="./assets/img/logos/logo.png" alt="EduGame">    
+
+                <label for="toggle-1" class="toggle-menu">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </label>
+                <input type="checkbox" id="toggle-1">
+
+                <nav>
+                    <ul>
+                        <li id="volver"><a>Volver</a></li>
+                    </ul>
+                </nav>
+            </div>
+`;
+};
+
+export const pintarMenuPrincipal = () => {
+    return `
+            <div id="menu">
+                <img src="./assets/img/logos/logo.png" alt="EduGame">    
+
+                <label for="toggle-1" class="toggle-menu">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </label>
+                <input type="checkbox" id="toggle-1">
+
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#juegos">Juegos</a></li>
+                        <li><a href="#equipo">Equipo</a></li>
+                        <li><a href="#footer">+ Información</a></li>
+                        <li id="acceder"><a>Acceder</a></li>
+                    </ul>
+                </nav>
+            </div>
+    `;
+};
+
+export const pintarPaginaPrincipal = () => {
+    return `
+            <div id="inicio">
+                <h1>Bienvenido a <span class="name1">Edu</span><span class="name2">Game</span></h1>
+                <h4>Diviertete y aprende con esta herramienta educativa</h4>
+            </div>
+            <div id="juegos">
+                <div class="containerJuegos">
+                    <h2 class="text-center">JUEGOS</h2>
+                    <div class="lightbox-gallery">
+                        <div class="containerJuego" id="wordle">
+                            <img src="./assets/img/portfolio/1.jpg" data-image-hd="https://picsum.photos/id/343/600/600"
+                                alt="Juego: Wordle">
+                            <h4>Wordle</h4>
+                            <p>Adivina la palabra</p>
+                        </div>
+                        <div class="containerJuego" id="akinator">
+                            <img src="./assets/img/portfolio/2.jpg" data-image-hd="https://picsum.photos/id/112/600/600"
+                                alt="Juego: Akinator">
+                            <h4>Akinator</h4>
+                            <p>Próximamente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contenedorEquipo">
+                <h2 class="titEquipo">Nuestro equipo</h2>
+                <div id="equipo">
+                    <div class="team">
+                        <img src="./assets/img/team/1.jpg" alt="Pablo Tomás">
+                        <h3>Pablo Tomás</h3>
+                        <p>Desarrollador Web</p>
+                    </div>
+                    <div class="team">
+                        <img src="./assets/img/team/2.jpg" alt="Virginia Campayo">
+                        <h3>Virginia Campayo</h3>
+                        <p>Desarrolladora Web</p>
+                    </div>
+                </div>
+            </div>
+    `;
+};
+
+/** Fin página principal. */
