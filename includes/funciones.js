@@ -1,6 +1,7 @@
 "use strict";
 import * as alu from "./alumnos.js";
 import * as prof from "./profesores.js";
+import { esAdmin } from "./admin.js";
 
 import {app, autentificacion} from "../js/datosConexion.js";
 import {
@@ -28,7 +29,6 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
-import { esAdmin } from "./admin.js";
 
 /** Conexión con la base de datos. **/
 const db = getFirestore(app);

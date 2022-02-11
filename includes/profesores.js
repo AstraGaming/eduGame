@@ -97,6 +97,7 @@ export const mostrarProfesores = async () => {
         d.getElementById("profesorado").innerHTML += "<tr id="+documento.id+"><td>"+documento.data().nombre+"</td><td>"+documento.data().apellido1+"</td><td>"+documento.data().apellido2+"</td><td><input type='button' value='Editar' name='editar'></td><td><input type='button' value='Eliminar' name='eliminar'></td></tr>";
     });
 
+    // Crear el formulario y llama a la función para añadir un profesor.
     d.getElementById("anadir").addEventListener("click", () => {
         d.getElementById("contenido").innerHTML = pintar.pintarFormuAnadirUsuario("profesor");
 
@@ -117,12 +118,26 @@ export const mostrarProfesores = async () => {
     var botonesEditar = d.getElementsByName("editar");
     var botonesEliminar = d.getElementsByName("eliminar");
 
+    // Editar el profesor.
     botonesEditar.forEach((boton) => {
+        var hijos = boton.parentNode.parentNode.childNodes;
+        var nombre = hijos[0].innerText;
+        var ape1 = hijos[1].innerText;
+        var ape2 = hijos[2].innerText;
         boton.addEventListener("click", () => {
-            d.getElementById("contenido").innerHTML = pintar.pintarFormuEditarUsuario();
+            d.getElementById("contenido").innerHTML = pintar.pintarFormuEditarUsuario("profesor", nombre, ape1, ape2);
+            d.getElementById("editarUsu").addEventListener("click", () => {
+                var id = boton.parentNode.parentNode.id;
+                var nombreNuevo = d.getElementById("nombreUsu").value;
+                var ape1Nuevo = d.getElementById("apellido1").value;
+                var ape2Nuevo = d.getElementById("apellido2").value;
+                actualizarProfesor(id, nombreNuevo, ape1Nuevo, ape2Nuevo);
+                mostrarProfesores();
+            }, false);
         });
     });
 
+    // Borrar el profesor.
     botonesEliminar.forEach((boton) => {
         var idProfesor = boton.parentNode.parentNode.id;
         var nombreProfesor = boton.parentNode.parentNode.firstChild.innerText;
@@ -181,6 +196,21 @@ export const guardarProfesor = async (profesor) => {
     }
     catch{
         console.log("Ha habido un problema al intentar añadir el profesor.");
+    }
+};
+
+// Editar profesor.
+export const actualizarProfesor = async (id, nombreR, ape1, ape2) => {
+    try{
+        const pruebaRef = await doc(profesores, id);
+        await updateDoc(pruebaRef, {
+          nombre: nombreR,
+          apellido1: ape1,
+          apellido2: ape2,
+        });
+    }
+    catch{
+        console.log("Ha habido un problema al intentar editar el profesor.");
     }
 };
 

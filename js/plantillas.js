@@ -404,25 +404,25 @@ export const pintarFormuAnadirUsuario = (tipo) => {
     `;
 };
 
-export const pintarFormuEditarUsuario = () => {
+export const pintarFormuEditarUsuario = (tipo, nombre, ape1, ape2) => {
     return `
             <form id="formuAnadir">
                 <div class="con">
                     <header class="head-form">
-                        <h2>Editar profesor/alumno</h2>
+                        <h2>Editar ${tipo}</h2>
                     </header>
                     <br>
                     <div class="field-set">
-                        <input class="form-input" id="nombreUsu" type="text" placeholder="Nombre" required>
+                        <input class="form-input" id="nombreUsu" type="text" value="${nombre}" required>
                         <br>
-                        <input class="form-input" type="text" placeholder="Primer apellido..." id="apellido1" name="apellido1" required>
+                        <input class="form-input" type="text" value="${ape1}" id="apellido1" name="apellido1" required>
                         <br>
-                        <input class="form-input" type="text" placeholder="Segundo apellido..." id="apellido2" name="apellido2" required>
+                        <input class="form-input" type="text" value="${ape2}" id="apellido2" name="apellido2" required>
                         <br><br>
                     </div>
                     <div class="other">
                         <button class="btn submits frgt-pass">¿Está todo correcto?   </button>
-                        <button class="btn submits sign-up">Editar usuario
+                        <button class="btn submits sign-up" id="editarUsu">Editar usuario
                             <i class="fa fa-user-plus" aria-hidden="true"></i>
                         </button>
                     </div>
