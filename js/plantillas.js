@@ -19,7 +19,6 @@ export const pintarLogin = () => {
                     </div>
                 </div>
                 <!-- backbox -->
-
                 <div class="frontbox">
                     <div class="login">
                         <h2>Iniciar sesión</h2>
@@ -30,7 +29,6 @@ export const pintarLogin = () => {
                         <p id="forgotPassw">¿Has olvidado la contraseña?</p>
                         <button id="iniciarSesion">Iniciar</button>
                     </div>
-
                     <div class="signup hide">
                         <h2>Crear cuenta</h2>
                         <div class="inputbox">
@@ -46,7 +44,6 @@ export const pintarLogin = () => {
                         </div>
                         <button id="crearCuenta">Crear</button>
                     </div>
-
                 </div>
                 <!-- frontbox -->
             </div>`;
@@ -56,7 +53,6 @@ export const pintarMenuProfesor = () => {
     return `
             <div id="menu">
                 <img src="./assets/img/logos/logo.png" alt="EduGame">    
-
                 <label for="toggle-1" class="toggle-menu">
                     <ul>
                         <li></li>
@@ -65,7 +61,6 @@ export const pintarMenuProfesor = () => {
                     </ul>
                 </label>
                 <input type="checkbox" id="toggle-1">
-
                 <nav>
                     <ul>
                         <li id="juegos"><a>Juegos</a></li>
@@ -82,7 +77,6 @@ export const pintarMenuAdmi = () => {
     return `
             <div id="menu">
                 <img src="./assets/img/logos/logo.png" alt="EduGame">    
-
                 <label for="toggle-1" class="toggle-menu">
                     <ul>
                         <li></li>
@@ -91,7 +85,6 @@ export const pintarMenuAdmi = () => {
                     </ul>
                 </label>
                 <input type="checkbox" id="toggle-1">
-
                 <nav>
                     <ul>
                         <li id="profesores"><a>Profesores</a></li>
@@ -107,58 +100,28 @@ export const pintarMenuAdmi = () => {
 export const pintarFooter = () => {
     return `
         <div class="footer-distributed">
-
             <div class="footer-left">
-
-                <h3>Edu<span>Game</span></h3>
-
-                <p class="footer-links">
-                    <a href="#header" class="link-1">Inicio</a>
-                    <a href="#">???</a> <!-- Blog-->
-                    <a href="#">???</a> <!-- About-->
-                    <a href="#">???</a> <!-- Contact-->
-                </p>
-
+                <h3 href="#">Edu<span>Game</span></h3>
                 <p class="footer-company-name">Astra Gaming © 2022</p>
+               
             </div>
-
             <div class="footer-center">
-
                 <div>
                     <i class="fa fa-map-marker"></i>
-                    <p><span>Dirección: ??</span> Localidad: ??</p>
+                    <p><span>Dirección: Av. Reina Sofia, 21, 03610 Petrer, Alicante</span> Localidad: Petrer</p>
                 </div>
-
                 <div>
                     <i class="fa fa-phone"></i>
-                    <p>Teléfono: ???</p>
+                    <p>Teléfono: 966 95 73 00</p>
                 </div>
-
-                <div>
-                    <i class="fa fa-envelope"></i>
-                    <p><a href="mailto:astragamingentertainment@gmail.com">astragamingentertainment@gmail.com</a></p>
-                </div>
-
             </div>
-
             <div class="footer-right">
-
                 <p class="footer-company-about">
-                    <span>Sobre nosotros</span>
-                    ?????????
+                    <p id="hablanos">Si quieres saber algo háblanos a:</p>
+                    <a id="email" href="mailto:astragamingentertainment@gmail.com">astragamingentertainment@gmail.com</a>
                 </p>
 
-                <div class="footer-icons">
-
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-github"></i></a>
-
-                </div>
-
             </div>
-
         </div>
     `;
 };
@@ -197,7 +160,6 @@ export const pintarAlumnos = () => {
                         <option value="DAW2">2ºDAW</option>
                     </select>
                 </div>
-
                 <div class="item">
                     <label for="asignatura"><p>Asignatura</p></label>
                     <select name="asignatura" id="asignatura">
@@ -255,7 +217,6 @@ export const pintarPerfilProfesor = () => {
                     <button id='editarDatos'>Editar</button>
                     </div>
                     
-
                 <section class="tablaCursosProfesor">
                     <h2>Asignaturas</h2>
                     <div class="tbl-header">
@@ -382,7 +343,7 @@ export const pintarFormuAnadirUsuario = (tipo) => {
             <form id="formuAnadir">
                 <div class="con">
                     <header class="head-form">
-                        <h2>Anadir ${tipo}</h2>
+                        <h2>Añadir ${tipo}</h2>
                     </header>
                     <br>
                     <div class="field-set">
@@ -448,34 +409,10 @@ export const mantenimiento = () => {
 };
 
 // Página principal desde dónde acceder.
-export const pintarMenuLogin = () => {
-    return `
-            <div id="menu">
-                <img src="./assets/img/logos/logo.png" alt="EduGame">    
-
-                <label for="toggle-1" class="toggle-menu">
-                    <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </label>
-                <input type="checkbox" id="toggle-1">
-
-                <nav>
-                    <ul>
-                        <li id="volver"><a>Volver</a></li>
-                    </ul>
-                </nav>
-            </div>
-`;
-};
-
 export const pintarMenuPrincipal = () => {
     return `
             <div id="menu">
                 <img src="./assets/img/logos/logo.png" alt="EduGame">    
-
                 <label for="toggle-1" class="toggle-menu">
                     <ul>
                         <li></li>
@@ -484,13 +421,12 @@ export const pintarMenuPrincipal = () => {
                     </ul>
                 </label>
                 <input type="checkbox" id="toggle-1">
-
                 <nav>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#juegos">Juegos</a></li>
-                        <li><a href="#equipo">Equipo</a></li>
-                        <li><a href="#footer">+ Información</a></li>
+                        <li><a href="#inicio" id="menuInicio">Inicio</a></li>
+                        <li><a href="#juegos" id="menuJuegos">Juegos</a></li>
+                        <li><a href="#equipo" id="menuEquipo">Equipo</a></li>
+                        <li><a href="#footer" id="menuInformacion">+ Información</a></li>
                         <li id="acceder"><a>Acceder</a></li>
                     </ul>
                 </nav>

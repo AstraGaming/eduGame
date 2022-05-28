@@ -3,10 +3,26 @@ var d = document;
 
 export const pintar = (plantillas) => {
     d.getElementById("contenido").innerHTML = plantillas.pintarLogin();
-    activarFuncLogin();
+    activarFuncLogin(plantillas);
 };
 
-const activarFuncLogin = () => {
+const activarFuncLogin = (plantillas) => {
+    d.getElementById("menuInicio").addEventListener("click", () => {
+        d.getElementById("contenido").innerHTML = plantillas.pintarPaginaPrincipal();
+    }, false);
+
+    d.getElementById("menuJuegos").addEventListener("click", () => {
+        d.getElementById("contenido").innerHTML = plantillas.pintarPaginaPrincipal();
+    }, false);
+
+    d.getElementById("menuEquipo").addEventListener("click", () => {
+        d.getElementById("contenido").innerHTML = plantillas.pintarPaginaPrincipal();
+    }, false);
+
+    d.getElementById("menuInformacion").addEventListener("click", () => {
+        d.getElementById("contenido").innerHTML = plantillas.pintarPaginaPrincipal();
+    }, false);
+
     var loginMsg = d.getElementsByClassName("loginMsg")[0],
         login = d.getElementsByClassName("login")[0],
         signupMsg = d.getElementsByClassName("signupMsg")[0],

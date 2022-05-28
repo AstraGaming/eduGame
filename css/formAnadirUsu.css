@@ -1,8 +1,4 @@
-       /* Fonts Form Google Font ::- https://fonts.google.com/  -:: */
-       @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
-
-
-       /* Start form  attributes */
+    /* Start form  attributes */
        #formuAnadir {
            width: 450px;
            min-height: 500px;
@@ -11,7 +7,7 @@
            margin: 2% auto;
            box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
            padding: 2%;
-           background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+           background-image: linear-gradient(-225deg, #404040  50%, #e6e6e6  50%);
        }
 
        /* form Container */
@@ -37,7 +33,7 @@
        /* Login title form form */
        #formuAnadir header h2 {
            font-size: 250%;
-           font-family: 'Playfair Display', serif;
+           font-family: Arial, Helvetica, sans-serif;
            color: #3e403f;
        }
 
@@ -89,7 +85,7 @@
            padding: 15px;
 
            font-size: 16px;
-           font-family: 'Abel', sans-serif;
+           font-family: Arial, Helvetica, sans-serif;
            color: #5E6472;
 
            outline: none;
@@ -152,7 +148,7 @@
 
        /*     Sign Up button  */
        #formuAnadir .sign-up {
-           background: #B8F2E6;
+           background: #6AB72F ;
        }
 
 

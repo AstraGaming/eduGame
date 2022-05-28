@@ -1,21 +1,15 @@
 "use strict";
 import * as plantillas from "./plantillas.js";
 import * as login from "./funcionesLogin.js";
-import * as profesor from "./funcionesProfesor.js";
-import * as admi from "./funcionesAdmi.js";
 
 import * as f from "../includes/funciones.js";
-import * as alu from "../includes/alumnos.js";
-import * as prof from "../includes/profesores.js"
 
 var d = document;
 
 window.onload = () => {
 
     d.getElementById("header").innerHTML = plantillas.pintarMenuPrincipal();
-
     d.getElementById("contenido").innerHTML = plantillas.pintarPaginaPrincipal();
-
     d.getElementById("footer").innerHTML = plantillas.pintarFooter();
 
     d.getElementById("acceder").addEventListener("click", () => {
@@ -26,6 +20,7 @@ window.onload = () => {
         d.getElementById("iniciarSesion").addEventListener("click", () => {
             f.iniciarSesion(d.getElementById("emailS").value, d.getElementById("passS").value);
         });
+
         /******** REGISTRO **********/
         //Como ya habrá información en la BBDD, al registrarse se completará ciertos valores y 
         //se comprobará que el usuario esté en la BBDD, para que no pueda registrarse cualquier persona.
