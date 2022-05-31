@@ -403,7 +403,7 @@ export const mantenimiento = () => {
                 <h1>En construcción</h1>
                 <p>Lo sentimos, no hemos encontrado un mensaje más original para decirte que estamos trabajando en ello.</p>
                 <h2>Disponible en:</h2>
-                <p class="casio" id="reloj">Junio (o antes)</p>
+                <p class="casio" id="reloj">2023 o en adelante.</p>
             </div>
     `;
 };
@@ -478,3 +478,68 @@ export const pintarPaginaPrincipal = () => {
 };
 
 /** Fin página principal. */
+
+/** Pintar Wordle */
+export const pintarWordleAlumno = () => {
+    return `<div id="game"></div>
+            <div id="infoGame" class="invisible"></div>`;
+};
+
+export const pintarWordleProfesor = () => {
+    return `<div id="wordleProfesor">
+                <form id="formuPalabra">
+                    <div class="wrap">
+                        <span class="decor"></span>
+                        <nav>
+                            <ul class="primary">
+                                <li>
+                                    <a href="">Dog</a>
+                                    <ul class="sub">
+                                        <li><a href="">Bulldog</a></li>
+                                        <li><a href="">Mastiff</a></li>
+                                        <li><a href="">Labrador</a></li>
+                                        <li><a href="">Mutt</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="">Cat</a>
+                                    <ul class="sub">
+                                        <li><a href="">Tabby</a></li>
+                                        <li><a href="">Black Cat</a></li>
+                                        <li><a href="">Wrinkly Cat</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <p></p><label>Palabra: <input type="text" name="palabra"></label></p>
+
+                    <div id="botonesPalabra">
+                        <button class="fill">Añadir palabra</button>
+                        <button class="fill">Eliminar palabra</button>
+                    </div>
+                </form>
+                <section id="diccionarioWordle">
+                    <div>
+                        <h2>Diccionario Wordle</h2>
+                        <ul class="check-list">
+                            <li>Head</li>
+                            <li>Shoulders</li>
+                            <li>Knees</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                            <li>Toes</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>`;
+};

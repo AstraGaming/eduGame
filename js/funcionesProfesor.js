@@ -2,6 +2,7 @@
 import { verAlumnos, verAsignatura } from "../includes/asignaturas.js";
 import * as f from "../includes/funciones.js";
 import { editarProfesor } from "../includes/profesores.js";
+import * as wordle from "../includes/wordle.js";
 var d = document;
 
 export const pintarMenu = (plantillas, profesor) => {
@@ -9,9 +10,10 @@ export const pintarMenu = (plantillas, profesor) => {
 
     d.getElementById("juegos").addEventListener("click", () => {
         d.getElementById("contenido").innerHTML = plantillas.pintarJuegos();
+
         // Juego wordle sin implementar.
         d.getElementById("wordle").addEventListener("click", () => {
-            d.getElementById("contenido").innerHTML = plantillas.mantenimiento();
+            d.getElementById("contenido").innerHTML = plantillas.pintarWordleProfesor();
         }, false);
          // Juego akinator sin implementar.
         d.getElementById("akinator").addEventListener("click", () => {
