@@ -1,7 +1,7 @@
 "use strict";
 import { verAlumnos, verAsignatura } from "../includes/asignaturas.js";
 import * as f from "../includes/funciones.js";
-import { actualizarProfesor } from "../includes/profesores.js";
+import { actualizarProfesor, iniciarAsignaturasAlumnosProfesor, verAsignaturasProfesor } from "../includes/profesores.js";
 import * as wordle from "../includes/wordle.js";
 var d = document;
 
@@ -23,9 +23,7 @@ export const pintarMenu = (plantillas, profesor) => {
 
     d.getElementById("alumnos").addEventListener("click", () => {
         d.getElementById("contenido").innerHTML = plantillas.pintarAlumnos();
-        d.getElementById("alumnosProfesor").innerHTML = "<h1>Alumnos</h1>";
-        //Obtenemos las asignaturas que imparte el profesor y las mostramos junto con el curso y los alumnos.
-        verAlumnos(profesor.id,profesor.asignatura);
+        iniciarAsignaturasAlumnosProfesor();
     }, false);
 
     d.getElementById("perfil").addEventListener("click", () => {
@@ -50,9 +48,9 @@ export const pintarMenu = (plantillas, profesor) => {
                 d.getElementById("apellido2").setAttribute("disabled","true");
             },false);
         },false);
+
         //Asignaturas
-        d.getElementById("tablaAsignaturas").innerHTML = "";
-        verAsignatura(profesor.id,profesor.asignatura);
+        verAsignaturasProfesor();
         
     }, false);
 
@@ -64,8 +62,3 @@ export const pintarMenu = (plantillas, profesor) => {
         }, false);
     }, false);
 };
-
-/*const cargarJuegos = () => {};
-const cargarAlumnos = () => {};
-const cargarPerfil = () => {};
-const cerrarSesion = () => {};*/

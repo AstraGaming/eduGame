@@ -154,19 +154,17 @@ export const pintarAlumnos = () => {
                 <h2>ALUMNOS</h2>
             </div>
             <div id="alumnoClase">
-                <div class="item">
-                    <label for="curso"><p>Curso</p></label>
-                    <select name="curso" id="curso">
-                        <option value="DAW1">1ºDAW</option>
-                        <option value="DAW2">2ºDAW</option>
-                    </select>
-                </div>
-                <div class="item">
-                    <label for="asignatura"><p>Asignatura</p></label>
-                    <select name="asignatura" id="asignatura">
-                        <option value="PROG">Programación</option>
-                        <option value="LEMA">Lenguaje de Marcas</option>
-                    </select>
+                <div class="wrap">
+                    <span class="decor"></span>
+                    <nav>
+                        <ul class="primary">
+                            <li>
+                                <a href=""> Asignatura: <span id="cursoActual"></span> - <span id="asignaturaActual"></span></a>
+                                <ul id="asignatura" class="sub">
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
             <div class="tbl-header">
@@ -182,27 +180,29 @@ export const pintarAlumnos = () => {
             </div>
             <div class="tbl-content">
             <table cellpadding="0" cellspacing="0" border="0">
-                <tbody>
-                <tr>
-                    <td>AAC</td>
-                    <td>AUSTRALIAN COMPANY </td>
-                    <td>$1.38</td>
-                </tr>
-                <tr>
-                    <td>AAD</td>
-                    <td>AUSENCO</td>
-                    <td>$2.38</td>
-                </tr>
-                <tr>
-                    <td>AAX</td>
-                    <td>ADELAIDE</td>
-                    <td>$3.22</td>
-                </tr>
+                <tbody id="alumnosTabla">
+                    <tr>
+                        <td>AAC</td>
+                        <td>AUSTRALIAN COMPANY </td>
+                        <td>$1.38</td>
+                    </tr>
                 </tbody>
             </table>
             </div>
         </section>
     `;
+};
+
+export const pintarLineaAsignaturaProfesorAlumnos = (curso, nombre) => {
+    return `<li class="asignatura"><a><span>${curso}</span> - <span>${nombre}</span></a></li>`;
+};
+
+export const pintarLineaAlumnoTabla = (nombre, apellido1, apellido2) => {
+    return `<tr>
+                <td>${nombre}</td>
+                <td>${apellido1}</td>
+                <td>${apellido2}</td>
+            </tr>`;
 };
 
 export const pintarPerfilProfesor = () => {
@@ -232,18 +232,10 @@ export const pintarPerfilProfesor = () => {
                     </div>
                     <div class="tbl-content">
                         <table cellpadding="0" cellspacing="0" border="0" id="tablaAsignaturas">
-                            <tbody>
+                            <tbody id="asignatura">
                                 <tr>
                                     <td>AAC</td>
                                     <td>AUSTRALIAN COMPANY </td>
-                                </tr>
-                                <tr>
-                                    <td>AAD</td>
-                                    <td>AUSENCO</td>
-                                </tr>
-                                <tr>
-                                    <td>AAX</td>
-                                    <td>ADELAIDE</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -251,6 +243,9 @@ export const pintarPerfilProfesor = () => {
                 </section>
             </div>
     `;
+};
+export const pintarLineaAsignaturaProfesor = (curso, asignatura) => {
+    return `<tr><td>${curso}</td><td>${asignatura}</td></tr>`;
 };
 
 export const pintarConfirmarCerrarSesion = () => {
@@ -514,10 +509,6 @@ export const pintarWordleProfesor = () => {
                     <div>
                         <h2>Diccionario Wordle</h2>
                         <ul id="diccionarioWordleProfesor">
-                            <li>Head</li>
-                            <li>Shoulders</li>
-                            <li>Knees</li>
-                            <li>Toes</li>
                         </ul>
                     </div>
                 </section>

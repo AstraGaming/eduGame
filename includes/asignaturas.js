@@ -1,5 +1,6 @@
 "use strict";
 import { app, autentificacion } from "../js/datosConexion.js";
+import * as plantilla from "../js/plantillas.js";
 import {
     getFirestore,
     collection,
@@ -25,6 +26,8 @@ import { buscarAlumno } from "./alumnos.js";
 const db = getFirestore(app);
 var d = document;
 const asignaturas = collection(db, "asignaturas");
+const alumnos = collection(db, "alumnos");
+
 //Crear dato en la colección asignaturas.
 export const crearAsignatura = async (nombre, curso, alumnos, profesor) => {
     const nuevaAsignatura = {
@@ -39,28 +42,27 @@ export const crearAsignatura = async (nombre, curso, alumnos, profesor) => {
     location.reload();
 };
 
-//Datos de la asignatura para mostrar alumnos
-export const verAlumnos = async (profe, nombre) => {
-    const asignaturasLista = await getDocs(asignaturas);
-    asignaturasLista.docs.map((documento) => {
-        for (var i = 0; i < nombre.length; i++) {
-            if (documento.data().id == nombre[i] && (documento.data().profesor == profe)) {
-                d.getElementById("alumnosProfesor").innerHTML += "<h2 id='" + documento.data().id + "Curso'></h3><h3>" + documento.data().nombre + "</h3>";
-                buscarAsignatura(documento.data().id, "Curso");
-                d.getElementById("alumnosProfesor").innerHTML += "<table id='" + documento.data().id + "'><tr><th>Nombre</th><th>1er Apellido</th><th>2º Apellido</th></tr>";
-                for (var j = 0; j < documento.data().alumnos.length; j++) {
-                    console.log(documento.data().alumnos[j]);
-                    buscarAlumno(documento.data().alumnos[j], documento.data().id);
-                }
-                d.getElementById("alumnosProfesor").innerHTML += "</table><br>";
-            }
-            else {
-                console.log("No hay asignaturas.");
-            }
-        }
+//Datos de la asignatura para mostrar alumnos (profesor).
+export const verAlumnos = async (idProfesor, curso, nombreAsignatura) => {
+    const consulta = query(
+        asignaturas,
+        where("profesor", "==", idProfesor),
+        where("curso", "==", curso),
+        where("nombre", "==", nombreAsignatura),
+    );
+    const asignas = await getDocs(consulta);
 
-    });
-}
+    document.getElementById("alumnosTabla").innerHTML = "";
+    for (let i = 0; i < asignas.docs[0].data().alumnos.length; i++) {
+        actualizarAlumnoTabla(asignas.docs[0].data().alumnos[i].trim());
+    }
+};
+const actualizarAlumnoTabla = async (id) => {
+    const refAlumno = await doc(alumnos, id);
+    var alu = await getDoc(refAlumno);
+    d.getElementById("alumnosTabla").innerHTML += plantilla.pintarLineaAlumnoTabla(alu.data().nombre, alu.data().apellido1, alu.data().apellido2);
+};
+
 //Datos de la asignatura.
 export const verAsignatura = async (idProfe, nombre) => {
     const asignaturasLista = await getDocs(asignaturas);
@@ -76,6 +78,7 @@ export const verAsignatura = async (idProfe, nombre) => {
         }
     });
 }
+
 //Editar datos asignatura.
 export const editarAsignatura = async (nombre) => {
     try {

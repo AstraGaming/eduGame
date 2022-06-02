@@ -159,7 +159,7 @@ export const esProfesor = async (email) => {
     const profesoresLista = await getDocs(profesores);
     profesoresLista.docs.map((documento) => {
         if(documento.data().email == email){
-            profe.pintarMenu(pintar,documento.data());
+            profe.pintarMenu(pintar, documento.data());
             d.getElementById("contenido").innerHTML = pintar.pintarJuegos();
             d.getElementById("wordle").addEventListener("click", () => {
                 wordle.activarWordleProfesor();
@@ -295,5 +295,48 @@ export const actualizarDiccionario = async (idProfesor, curso, nombreAsignatura)
     diccionario.innerHTML = "";
     for (let i = 0; i < palabrasConsulta.docs[0].data().diccionario.length; i++) {
         diccionario.innerHTML += pintar.pintarLineaDiccionarioAsignatura(palabrasConsulta.docs[0].data().diccionario[i]);
+    }
+};
+
+
+// Escribir los alumnos de un profesor [Profesor].
+export const iniciarAsignaturasAlumnosProfesor = async () => {
+    const consulta = query(
+        asignaturas,
+        where("profesor", "==", document.getElementById("idProfesor").innerHTML.trim())
+    );
+    const asignaturasConsulta = await getDocs(consulta);
+
+    document.getElementById("cursoActual").innerHTML = asignaturasConsulta.docs[0].data().curso;
+    document.getElementById("asignaturaActual").innerHTML = asignaturasConsulta.docs[0].data().nombre;
+
+    var listaAsignaturas = document.getElementById("asignatura");
+    listaAsignaturas.innerHTML = "";
+    for (let i = 0; i < asignaturasConsulta.docs.length; i++) {
+        listaAsignaturas.innerHTML += pintar.pintarLineaAsignaturaProfesorAlumnos(asignaturasConsulta.docs[i].data().curso, asignaturasConsulta.docs[i].data().nombre);
+    }
+
+    asig.verAlumnos(d.getElementById("idProfesor").innerHTML.trim(), asignaturasConsulta.docs[0].data().curso, asignaturasConsulta.docs[0].data().nombre);
+
+    var asignaturas2 = document.getElementsByClassName("asignatura");
+    for (let i = 0; i < asignaturas2.length; i++) {
+        asignaturas2[i].addEventListener("click", () => {
+            asig.verAlumnos(d.getElementById("idProfesor").innerHTML.trim(), asignaturas2[i].firstChild.firstChild.innerHTML, asignaturas2[i].firstChild.lastChild.innerHTML);
+        }, false);
+    }
+};
+
+// Escribir los alumnos de un profesor [Profesor].
+export const verAsignaturasProfesor = async () => {
+    const consulta = query(
+        asignaturas,
+        where("profesor", "==", document.getElementById("idProfesor").innerHTML.trim())
+    );
+    const asignaturasConsulta = await getDocs(consulta);
+
+    var listaAsignaturas = document.getElementById("asignatura");
+    listaAsignaturas.innerHTML = "";
+    for (let i = 0; i < asignaturasConsulta.docs.length; i++) {
+        listaAsignaturas.innerHTML += pintar.pintarLineaAsignaturaProfesor(asignaturasConsulta.docs[i].data().curso, asignaturasConsulta.docs[i].data().nombre);
     }
 };

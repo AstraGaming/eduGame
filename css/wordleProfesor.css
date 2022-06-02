@@ -88,14 +88,16 @@
 }
 
 
-body #wordleProfesor {
+body #wordleProfesor, 
+body #alumnoClase {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     text-transform: uppercase;
     text-align: center;
 }
 
-#wordleProfesor .wrap {
+#wordleProfesor .wrap, 
+#alumnoClase .wrap {
     display: inline-block;
     -webkit-box-shadow: 0 0 70px #fff;
     -moz-box-shadow: 0 0 70px #fff;
@@ -105,7 +107,8 @@ body #wordleProfesor {
 }
 
 /* a little "umph" */
-#wordleProfesor .decor {
+#wordleProfesor .decor, 
+#alumnoClase .decor {
     background: #6EAF8D;
     background: -webkit-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
     background: -moz-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
@@ -117,34 +120,41 @@ body #wordleProfesor {
     display: block;
 }
 
-#wordleProfesor a {
+#wordleProfesor a, 
+#alumnoClase a {
     text-decoration: none;
     color: #fff;
     display: block;
 }
 
-#wordleProfesor ul {
+#wordleProfesor ul, 
+#alumnoClase ul {
     list-style: none;
     position: relative;
     text-align: left;
 }
 
-#wordleProfesor li {
+#wordleProfesor li, 
+#alumnoClase li {
     float: left;
 }
 
 /* clear'n floats */
-#wordleProfesor ul:after {
+#wordleProfesor ul:after, 
+#alumnoClase ul:after {
     clear: both;
 }
 
 #wordleProfesor ul:before,
-#wordleProfesor ul:after {
+#wordleProfesor ul:after,
+#alumnoClase ul:before,
+#alumnoClase ul:after {
     content: " ";
     display: table;
 }
 
-#wordleProfesor nav {
+#wordleProfesor nav,
+#alumnoClase nav {
     position: relative;
     background: #2B2B2B;
     background-image: -webkit-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
@@ -162,7 +172,8 @@ body #wordleProfesor {
 }
 
 /* prime */
-#wordleProfesor ul.primary li a {
+#wordleProfesor ul.primary li a,
+#alumnoClase ul.primary li a {
     display: block;
     padding: 20px 30px;
     border-right: 1px solid #3D3D3D;
@@ -171,17 +182,19 @@ body #wordleProfesor {
     cursor: pointer;
 }
 
-#wordleProfesor ul.primary li:last-child a {
+#wordleProfesor ul.primary li:last-child a,
+#alumnoClase ul.primary li:last-child a {
     border-right: none;
 }
 
-#wordleProfesor ul.primary li a:hover {
-
+#wordleProfesor ul.primary li a:hover,
+#alumnoClase ul.primary li a:hover {
     color: #000;
 }
 
 /* subs */
-#wordleProfesor ul.sub {
+#wordleProfesor ul.sub,
+#alumnoClase ul.sub {
     position: absolute;
     z-index: 200;
     box-shadow: 2px 2px 0 #BEBEBE;
@@ -189,91 +202,107 @@ body #wordleProfesor {
     display: none;
 }
 
-#wordleProfesor ul.sub li {
+#wordleProfesor ul.sub li,
+#alumnoClase ul.sub li {
     float: none;
     margin: 0;
 }
 
-#wordleProfesor ul.sub li a {
+#wordleProfesor ul.sub li a,
+#alumnoClase ul.sub li a {
     border-bottom: 1px dotted #ccc;
     border-right: none;
     color: #000;
     padding: 15px 30px;
 }
 
-#wordleProfesor ul.sub li:last-child a {
+#wordleProfesor ul.sub li:last-child a,
+#alumnoClase ul.sub li:last-child a {
     border-bottom: none;
 }
 
-#wordleProfesor ul.sub li a:hover {
+#wordleProfesor ul.sub li a:hover,
+#alumnoClase ul.sub li a:hover {
     color: #000;
     background: #eeeeee;
 }
 
 /* sub display*/
-#wordleProfesor ul.primary li:hover ul {
+#wordleProfesor ul.primary li:hover ul,
+#alumnoClase ul.primary li:hover ul {
     display: block;
     background: #fff;
 }
 
 /* keeps the tab background white */
-#wordleProfesor ul.primary li:hover a {
+#wordleProfesor ul.primary li:hover a,
+#alumnoClase ul.primary li:hover {
     background: #fff;
     color: #666;
     text-shadow: none;
 }
 
-#wordleProfesor ul.primary li:hover>a {
+#wordleProfesor ul.primary li:hover>a,
+#alumnoClase ul.primary li:hover>a {
     color: #000;
 }
 
 @media only screen and (max-width: 600px) {
-    #wordleProfesor .decor {
+    #wordleProfesor .decor,
+    #alumnoClase .decor {
         padding: 3px;
     }
 
-    #wordleProfesor .wrap {
+    #wordleProfesor .wrap,
+    #alumnoClase .wrap {
         width: 100%;
         margin-top: 0px;
     }
 
-    #wordleProfesor li {
+    #wordleProfesor li,
+    #alumnoClase li {
         float: none;
     }
 
-    #wordleProfesor ul.primary li:hover a {
+    #wordleProfesor ul.primary li:hover a,
+    #alumnoClase ul.primary li:hover a {
         background: none;
         color: #8B8B8B;
         text-shadow: 1px 1px #000;
     }
 
-    #wordleProfesor ul.primary li:hover ul {
+    #wordleProfesor ul.primary li:hover ul,
+    #alumnoClase ul.primary li:hover ul {
         display: block;
         background: #272727;
         color: #fff;
     }
 
-    #wordleProfesor ul.sub {
+    #wordleProfesor ul.sub,
+    #alumnoClase ul.sub {
         display: block;
         position: static;
         box-shadow: none;
         width: 100%;
     }
 
-    #wordleProfesor ul.sub li a {
+    #wordleProfesor ul.sub li a,
+    #alumnoClase ul.sub li a {
         background: #272727;
         border: none;
         color: #8B8B8B;
     }
 
-    #wordleProfesor ul.sub li a:hover {
+    #wordleProfesor ul.sub li a:hover,
+    #alumnoClase ul.sub li a:hover {
         color: #ccc;
         background: none;
     }
 }
 
 /* Fill button styling */
-#wordleProfesor .fill {
+#wordleProfesor .fill,
+#alumnoClase .fill {
     margin-top: 20px;
     margin-bottom: 100px;
     font-size: 12px;
@@ -287,7 +316,8 @@ body #wordleProfesor {
     background-color: rgba(0, 0, 0, 0);
 }
 
-#wordleProfesor .fill::after {
+#wordleProfesor .fill::after,
+#alumnoClase .fill::after {
     content: "";
     background-color: #ffe54c;
     width: 100%;
@@ -299,7 +329,8 @@ body #wordleProfesor {
     transition: 0.2s;
 }
 
-#wordleProfesor .fill:hover::after {
+#wordleProfesor .fill:hover::after,
+#alumnoClase .fill:hover::after {
     top: 0px;
     left: 0px;
 }
