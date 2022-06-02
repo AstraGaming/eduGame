@@ -69,6 +69,7 @@ onAuthStateChanged(autentificacion, (usuario) => {
         console.log("Sesión no iniciada.");
     }
 });
+
 //Función para iniciar sesión.
 export const iniciarSesion = (usuario, contra) => {
   //Sólo podrá iniciar sesión si antes se ha "registrado", para esto hará falta que esté en el sistema.

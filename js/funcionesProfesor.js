@@ -1,19 +1,19 @@
 "use strict";
 import { verAlumnos, verAsignatura } from "../includes/asignaturas.js";
 import * as f from "../includes/funciones.js";
-import { editarProfesor } from "../includes/profesores.js";
+import { actualizarProfesor } from "../includes/profesores.js";
 import * as wordle from "../includes/wordle.js";
 var d = document;
 
 export const pintarMenu = (plantillas, profesor) => {
-    d.getElementById("header").innerHTML = plantillas.pintarMenuProfesor();
+    d.getElementById("header").innerHTML = plantillas.pintarMenuProfesor(profesor.id);
 
     d.getElementById("juegos").addEventListener("click", () => {
         d.getElementById("contenido").innerHTML = plantillas.pintarJuegos();
 
         // Juego wordle sin implementar.
         d.getElementById("wordle").addEventListener("click", () => {
-            d.getElementById("contenido").innerHTML = plantillas.pintarWordleProfesor();
+            wordle.activarWordleProfesor();
         }, false);
          // Juego akinator sin implementar.
         d.getElementById("akinator").addEventListener("click", () => {
@@ -42,7 +42,7 @@ export const pintarMenu = (plantillas, profesor) => {
             d.getElementById("editarDatosConf").removeAttribute("hidden");
             d.getElementById("editarDatos").setAttribute("hidden","true");
             d.getElementById("editarDatosConf").addEventListener("click", () => {
-                editarProfesor(profesor.id,d.getElementById("nombre").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value);
+                actualizarProfesor(profesor.id,d.getElementById("nombre").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value);
                 d.getElementById("editarDatos").removeAttribute("hidden");
                 d.getElementById("editarDatosConf").setAttribute("hidden","true");
                 d.getElementById("nombre").setAttribute("disabled","true");

@@ -1,4 +1,6 @@
 "use strict";
+import * as profesores from "./profesores.js";
+import * as plantilla from "../js/plantillas.js";
 
 const dictionary = ['earth', 'plane', 'crane', 'audio', 'house', "mouse", "abuse", "avoid", "begin"];
 const state = {
@@ -181,4 +183,27 @@ export const iniciarWordles = () => {
     drawGrid(game);
 
     registerKeyboardEvents();
+};
+
+
+/** Parte Wordle manejo desde profesor. */
+
+export const activarWordleProfesor = () => {
+
+    document.getElementById("contenido").innerHTML = plantilla.pintarWordleProfesor();
+    var idProfesor = document.getElementById("idProfesor").innerHTML.trim();
+
+    profesores.iniciarAsignaturaWordleProfesor(idProfesor);
+
+};
+
+export const reiniciarDiccionario = (idProfesor, curso, nombreAsignatura) => {
+    document.getElementById("cursoActual").innerHTML = curso;
+    document.getElementById("asignaturaActual").innerHTML = nombreAsignatura;
+    profesores.actualizarDiccionario(idProfesor, curso, nombreAsignatura);
+};
+
+export const palabraValida = (palabra) => {
+    if(palabra.length < 5 || palabra.length > 5) return false;
+    else return true;
 };

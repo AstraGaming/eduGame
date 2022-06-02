@@ -167,6 +167,9 @@ body #wordleProfesor {
     padding: 20px 30px;
     border-right: 1px solid #3D3D3D;
 }
+.asignatura:hover {
+    cursor: pointer;
+}
 
 #wordleProfesor ul.primary li:last-child a {
     border-right: none;
@@ -299,6 +302,13 @@ body #wordleProfesor {
 #wordleProfesor .fill:hover::after {
     top: 0px;
     left: 0px;
+}
+
+#wordleProfesor #botonesPalabra input {
+    background-color: #FDE428;
+}
+#wordleProfesor #botonesPalabra input:hover {
+    background-color: #ddc720;
 }
 
 /* End of Fill Button  */

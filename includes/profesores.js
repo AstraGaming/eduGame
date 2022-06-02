@@ -1,6 +1,8 @@
 "use strict";
 import * as profe from "../js/funcionesProfesor.js";
+import * as asig from "./asignaturas.js";
 import * as pintar from "../js/plantillas.js";
+import * as wordle from "./wordle.js";
 import {app, autentificacion} from "../js/datosConexion.js";
 import {
     getFirestore,
@@ -32,6 +34,7 @@ import {
 const db = getFirestore(app);
 var d = document;
 const profesores = collection(db, "profesores");
+const asignaturas = collection(db, "asignaturas");
 
 //Crear dato en la lista profesores.
 //Crear profesor desde admin. 
@@ -48,7 +51,7 @@ export const crearProfesorAdmi = (nombreR, ape1, ape2, emailR) => {
         email: emailR,
         fCreacion: fecha + ' ' + hora,
         rol: 1,
-        asignaturas: [],
+        id: "",
     };
 
     guardarProfesor(nuevoProfesor);
@@ -87,7 +90,7 @@ export const verProfesor = async (id) => {
     var fCreacion=profesor.docs[0].data().fCreacion;
 
     console.log(nombre+" "+apellidos+" "+email+" "+fCreacion);
-}
+};
 
 //Ver todo el profesorado.
 export const mostrarProfesores = async () => {
@@ -159,8 +162,9 @@ export const esProfesor = async (email) => {
             profe.pintarMenu(pintar,documento.data());
             d.getElementById("contenido").innerHTML = pintar.pintarJuegos();
             d.getElementById("wordle").addEventListener("click", () => {
-                d.getElementById("contenido").innerHTML = pintar.mantenimiento();
+                wordle.activarWordleProfesor();
             }, false);
+            
              // Juego akinator sin implementar.
             d.getElementById("akinator").addEventListener("click", () => {
                 d.getElementById("contenido").innerHTML = pintar.mantenimiento();
@@ -173,27 +177,11 @@ export const esProfesor = async (email) => {
     });
 }
 
-//Editar datos profesor.
-export const editarProfesor = async (id,nombre,ape1,ape2) =>{
-    try{
-        const profesor = await doc(profesores, id);
-        await updateDoc(profesor, {
-            nombre: nombre,
-            apellido1: ape1,
-            apellido2: ape2
-          });
-        location.reload();
-    }
-    catch{
-        console.log("Ha habido algún error al editar.")
-    }
-        
-}
-
 // Añadir profesor.
 export const guardarProfesor = async (profesor) => {
     try{
-        await addDoc(profesores, profesor);
+        const profeAwait = await addDoc(profesores, profesor);
+        actualizarIDProfesor(profeAwait.id);
     }
     catch{
         console.log("Ha habido un problema al intentar añadir el profesor.");
@@ -209,10 +197,23 @@ export const actualizarProfesor = async (id, nombreR, ape1, ape2) => {
           apellido1: ape1,
           apellido2: ape2,
         });
-        
+        mostrarProfesores();
     }
     catch{
         console.log("Ha habido un problema al intentar editar el profesor.");
+    }
+};
+
+// Actualizar id Profesor.
+export const actualizarIDProfesor = async (id) => {
+    try{
+        const pruebaRef = await doc(profesores, id);
+        await updateDoc(pruebaRef, {
+          id: id,
+        });
+    }
+    catch{
+        console.log("Ha habido un problema al intentar editar el id del profesor.");
     }
 };
 
@@ -224,4 +225,75 @@ export const eliminarProfesor = async (id) => {
     catch{
         console.log("Ha habido un problema al intentar eliminar el profesor.");
     }
-}
+};
+
+
+// Escribir las asignaturas de un profesor [WORDLE].
+export const iniciarAsignaturaWordleProfesor = async (idProfesor) => {
+    const consulta = query(
+        asignaturas,
+        where("profesor", "==", idProfesor)
+    );
+    const asignaturasConsulta = await getDocs(consulta);
+
+    var listaAsignaturas = document.getElementById("listaAsignaturasWordleProfesor");
+    listaAsignaturas.innerHTML = "";
+    for (let i = 0; i < asignaturasConsulta.docs.length; i++) {
+        listaAsignaturas.innerHTML += pintar.pintarLineaListaAsignaturaProfesorWordle(asignaturasConsulta.docs[i].data().curso, asignaturasConsulta.docs[i].data().nombre);
+    }
+
+    wordle.reiniciarDiccionario(idProfesor, asignaturasConsulta.docs[0].data().curso, asignaturasConsulta.docs[0].data().nombre);
+
+    var asignaturas2 = document.getElementsByClassName("asignatura");
+    for (let i = 0; i < asignaturas2.length; i++) {
+        asignaturas2[i].addEventListener("click", () => {
+            wordle.reiniciarDiccionario(idProfesor, asignaturas2[i].firstChild.firstChild.innerHTML, asignaturas2[i].firstChild.lastChild.innerHTML);
+        }, false);
+    }
+
+
+    /**Botones para añadir y eliminar palabras de un diccionario. */
+    document.getElementById("botonAnadirPalabra").addEventListener("click", () => {
+        var palabra = document.getElementById("palabra").value;
+
+        if(wordle.palabraValida(palabra)){
+            asig.buscarIDDiccionario(idProfesor, document.getElementById("cursoActual").innerHTML, document.getElementById("asignaturaActual").innerHTML, "anadir", palabra);
+            actualizarDiccionario(idProfesor, document.getElementById("cursoActual").innerHTML, document.getElementById("asignaturaActual").innerHTML);
+        }else{
+            console.log("Palabra no válida");
+        }
+
+    }, false);
+
+    document.getElementById("botonEliminarPalabra").addEventListener("click", () => {
+        var palabra = document.getElementById("palabra").value;
+
+        if(wordle.palabraValida(palabra)){
+            asig.buscarIDDiccionario(idProfesor, document.getElementById("cursoActual").innerHTML, document.getElementById("asignaturaActual").innerHTML, "borrar", palabra);
+            actualizarDiccionario(idProfesor, document.getElementById("cursoActual").innerHTML, document.getElementById("asignaturaActual").innerHTML);
+        }else{
+            console.log("Palabra no válida");
+        }
+    }, false);
+
+    document.getElementById("recargarPalabras").addEventListener("click", () => {
+        actualizarDiccionario(idProfesor, document.getElementById("cursoActual").innerHTML, document.getElementById("asignaturaActual").innerHTML);
+    }, false);
+};
+
+// Activar el diccionario de un curso, asignatura y profesor concreto [WORDLE].
+export const actualizarDiccionario = async (idProfesor, curso, nombreAsignatura) => {
+    const consulta = query(
+        asignaturas,
+        where("profesor", "==", idProfesor),
+        where("curso", "==", curso),
+        where("nombre", "==", nombreAsignatura),
+    );
+    const palabrasConsulta = await getDocs(consulta);
+
+    var diccionario = document.getElementById("diccionarioWordleProfesor");
+    diccionario.innerHTML = "";
+    for (let i = 0; i < palabrasConsulta.docs[0].data().diccionario.length; i++) {
+        diccionario.innerHTML += pintar.pintarLineaDiccionarioAsignatura(palabrasConsulta.docs[0].data().diccionario[i]);
+    }
+};

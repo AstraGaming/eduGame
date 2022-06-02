@@ -19,7 +19,7 @@ export const pintarMenu = (plantillas) => {
 
     /** Muestra las asignaturas. */
     d.getElementById("asignaturas").addEventListener("click", () => {
-        d.getElementById("contenido").innerHTML = plantillas.mantenimiento();
+        d.getElementById("contenido").innerHTML = plantillas.pintarAdminAsignaturas();
     }, false);
 
     /** Te lleva a cerrar la sesión de admi. */

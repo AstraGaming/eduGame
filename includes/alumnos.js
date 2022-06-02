@@ -47,6 +47,7 @@ export const crearAlumnoAdmi = async (nombreR, ape1, ape2, emailR) => {
         apellido1: ape1,
         apellido2: ape2,
         email: emailR,
+        id: "", 
         fCreacion: fecha + ' ' + hora,
         rol: 0,
     };
@@ -175,25 +176,12 @@ export const esAlumno = async (email) => {
         }
     });
 }
-//Editar datos alumno.
-export const editarAlumno = async (id,nombre) =>{
-    try{
-        const alumno = await doc(alumnos, id);
-        await updateDoc(alumno, {
-          nombre: nombre,
-          //Todo lo que queramos editar.
-        });
-        
-    }
-    catch{
-        console.log("Ha habido algún error al editar.")
-    }
-        
-}
+
 // Añadir alumno.
 export const guardarAlumno = async (alumno) => {
     try{
-        await addDoc(alumnos, alumno);
+        const aluAwait = await addDoc(alumnos, alumno);
+        actualizarIDAlumno(aluAwait.id);
     }
     catch{
         console.log("Ha habido un problema al intentar añadir el alumno.");
@@ -212,6 +200,17 @@ export const actualizarAlumno = async (id, nombreR, ape1, ape2) => {
     }
     catch{
         console.log("Ha habido un problema al intentar editar el alumno.");
+    }
+};
+const actualizarIDAlumno = async (id) => {
+    try{
+        const pruebaRef = await doc(alumnos, id);
+        await updateDoc(pruebaRef, {
+          id: id,
+        });
+    }
+    catch{
+        console.log("Ha habido un problema al intentar editar el id del alumno.");
     }
 };
 

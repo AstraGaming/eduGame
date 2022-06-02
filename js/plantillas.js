@@ -49,7 +49,7 @@ export const pintarLogin = () => {
             </div>`;
 };
 
-export const pintarMenuProfesor = () => {
+export const pintarMenuProfesor = (idProfesor) => {
     return `
             <div id="menu">
                 <img src="./assets/img/logos/logo.png" alt="EduGame">    
@@ -69,6 +69,7 @@ export const pintarMenuProfesor = () => {
                         <li id="cerrarSesion"><a>Cerrar sesión</a></li>
                     </ul>
                 </nav>
+                <div id="idProfesor" class="invisible">${idProfesor}</div>
             </div>
     `;
 };
@@ -493,53 +494,83 @@ export const pintarWordleProfesor = () => {
                         <nav>
                             <ul class="primary">
                                 <li>
-                                    <a href="">Dog</a>
-                                    <ul class="sub">
-                                        <li><a href="">Bulldog</a></li>
-                                        <li><a href="">Mastiff</a></li>
-                                        <li><a href="">Labrador</a></li>
-                                        <li><a href="">Mutt</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="">Cat</a>
-                                    <ul class="sub">
-                                        <li><a href="">Tabby</a></li>
-                                        <li><a href="">Black Cat</a></li>
-                                        <li><a href="">Wrinkly Cat</a></li>
+                                    <a href=""> Asignatura: <span id="cursoActual"></span> - <span id="asignaturaActual"></span></a>
+                                    <ul id="listaAsignaturasWordleProfesor" class="sub">
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
                     </div>
 
-
-                    <p></p><label>Palabra: <input type="text" name="palabra"></label></p>
-
+                    <p></p><label>Palabra: <input id="palabra" type="text" name="palabra"></label></p>
                     <div id="botonesPalabra">
-                        <button class="fill">Añadir palabra</button>
-                        <button class="fill">Eliminar palabra</button>
+                        <input type="button" id="botonAnadirPalabra" class="fill" value ="Añadir palabra"></input>
+                        <input type="button" id="botonEliminarPalabra" class="fill" value="Eliminar palabra"></input>
+                        <input type="button" id="recargarPalabras" class="fill" value="Recargar palabras"></input>
                     </div>
                 </form>
+
                 <section id="diccionarioWordle">
                     <div>
                         <h2>Diccionario Wordle</h2>
-                        <ul class="check-list">
+                        <ul id="diccionarioWordleProfesor">
                             <li>Head</li>
                             <li>Shoulders</li>
                             <li>Knees</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
-                            <li>Toes</li>
                             <li>Toes</li>
                         </ul>
                     </div>
                 </section>
             </div>`;
+};
+export const pintarLineaListaAsignaturaProfesorWordle = (curso, asignatura) => {
+    return `<li class="asignatura"><a><span>${curso}</span> - <span>${asignatura}</span></a></li>`;
+};
+
+export const pintarLineaDiccionarioAsignatura = (palabra) => {
+    return `<li>-   ${palabra}  -</li>`;
+};
+
+export const pintarAdminAsignaturas = () => {
+    return `
+            <div id="adminAsignaturas">
+                <form id="formuPalabra">
+                    <section class="tablaAlumnos">
+                        <div class="tbl-header">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Profesor</th>
+                                        <th>Asignatura</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="tbl-content">
+                            <table cellpadding="0" cellspacing="0" border="0" id="profesorado">
+                                <tbody>
+                                    <tr>
+                                        <td>1ºDAW</td>
+                                        <td>Silvia Amorós</td>
+                                        <td>Base de Datos</td>
+                                        <td><input type='button' value='Eliminar' name='eliminar'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2ºDAW</td>
+                                        <td>Silvia Amorós</td>
+                                        <td>Despliegue de Aplicaciones Web</td>
+                                        <td><input type='button' value='Eliminar' name='eliminar'></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <div id="botonAnadirAsignatura">
+                        <button class="fill">Añadir asignatura</button>
+                    </div>
+                </form>
+            </div>`
 };

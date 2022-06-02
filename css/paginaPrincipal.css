@@ -4,6 +4,10 @@
     font-weight: bold;
 }
 
+.invisible {
+    visibility: hidden;
+}
+
 #inicio {
     margin-top: 60px;
     margin-bottom: 60px;
