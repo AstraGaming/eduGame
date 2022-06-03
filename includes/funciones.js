@@ -54,6 +54,7 @@ export const crearCuenta = async (nombre, ape1, ape2, email, pass, rol) => {
             
           
 }
+
 //Comprobar si hay una sesión iniciada.
 onAuthStateChanged(autentificacion, (usuario) => {
     if (usuario) {
@@ -78,10 +79,9 @@ export const iniciarSesion = (usuario, contra) => {
         console.log("Iniciando sesión...");
         if (usuario == "admin@edugame.com"){
           esAdmin();
-        }
-        else{
-          prof.esProfesor(usuario);
-          alu.esAlumno(usuario);
+        }else{
+          prof.esProfesor(usuario.email);
+          alu.esAlumno(usuario.email);
         }
         
       })
@@ -89,6 +89,7 @@ export const iniciarSesion = (usuario, contra) => {
         console.log("Error al iniciar sesión");
       });
 };
+
 //Función para cerrar sesión.
 export const cerrarSesion = () => {
     autentificacion

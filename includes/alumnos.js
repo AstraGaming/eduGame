@@ -1,5 +1,6 @@
 "use strict";
 import * as pintar from "../js/plantillas.js";
+import * as alu from "../js/funcionesAlumno.js";
 
 import {app, autentificacion} from "../js/datosConexion.js";
 import {
@@ -167,9 +168,7 @@ export const esAlumno = async (email) => {
     const alumnosLista = await getDocs(alumnos);
     alumnosLista.docs.map((documento) => {
         if(documento.data().email == email){
-            console.log("Entramos como alumno");
-            /* APARTADO EN MENTENIMIENTO IMPLEMENTAR MÁS ADELANTE */
-            cerrarSesion();
+            alu.pintarMenu(pintar, documento.data());
         }
         else {
             console.log("No es un alumno.");
@@ -223,3 +222,18 @@ export const eliminarAlumno = async (id) => {
         console.log("Ha habido un problema al intentar eliminar el alumno.");
     }
 }
+
+// Escribir los alumnos de un profesor [Alumno].
+export const verAsignaturasAlumno = async () => {
+    const consulta = query(
+        asignaturas,
+        where("profesor", "==", document.getElementById("idProfesor").innerHTML.trim())
+    );
+    const asignaturasConsulta = await getDocs(consulta);
+
+    var listaAsignaturas = document.getElementById("asignatura");
+    listaAsignaturas.innerHTML = "";
+    for (let i = 0; i < asignaturasConsulta.docs.length; i++) {
+        listaAsignaturas.innerHTML += pintar.pintarLineaAsignaturaProfesor(asignaturasConsulta.docs[i].data().curso, asignaturasConsulta.docs[i].data().nombre);
+    }
+};

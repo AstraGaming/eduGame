@@ -178,6 +178,7 @@ const reiniciarWordle = () => {
 };
 
 export const iniciarWordles = () => {
+    document.getElementById("contenido").innerHTML = "<div id='game'></div>";
     const game = document.getElementById("game");
     reiniciarWordle();
     drawGrid(game);

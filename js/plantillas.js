@@ -74,6 +74,30 @@ export const pintarMenuProfesor = (idProfesor) => {
     `;
 };
 
+export const pintarMenuAlumno = (idAlumno) => {
+    return `
+            <div id="menu">
+                <img src="./assets/img/logos/logo.png" alt="EduGame">    
+                <label for="toggle-1" class="toggle-menu">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </label>
+                <input type="checkbox" id="toggle-1">
+                <nav>
+                    <ul>
+                        <li id="juegos"><a>Juegos</a></li>
+                        <li id="perfil"><a>Mi perfil</a></li>
+                        <li id="cerrarSesion"><a>Cerrar sesión</a></li>
+                    </ul>
+                </nav>
+                <div id="idProfesor" class="invisible">${idAlumno}</div>
+            </div>
+    `;
+};
+
 export const pintarMenuAdmi = () => {
     return `
             <div id="menu">
@@ -214,9 +238,7 @@ export const pintarPerfilProfesor = () => {
                     <p>Primer apellido: <input type="text" value="Reig" id="apellido1" disabled></input></p>
                     <p>Segundo apellido: <input type="text" value="Alejo" id="apellido2" disabled></input></p>
                     <p>Email: <input type="text" value="pepitoreig.alu@iespacomolla.es" id="email" disabled></input></p>
-                    <button id='editarDatosConf' hidden>Confirmar</button>
-                    <button id='editarDatos'>Editar</button>
-                    </div>
+                </div>
                     
                 <section class="tablaCursosProfesor">
                     <h2>Asignaturas</h2>
@@ -245,6 +267,47 @@ export const pintarPerfilProfesor = () => {
     `;
 };
 export const pintarLineaAsignaturaProfesor = (curso, asignatura) => {
+    return `<tr><td>${curso}</td><td>${asignatura}</td></tr>`;
+};
+
+export const pintarPerfilAlumno = () => {
+    return `
+            <div id="perfilProfesor">
+                <div class="form">
+                    <input type="text" value="" id="idProf" hidden>
+                    <p>Nombre: <input type="text" value="Pepito" id="nombre" disabled></p>
+                    <p>Primer apellido: <input type="text" value="Reig" id="apellido1" disabled></input></p>
+                    <p>Segundo apellido: <input type="text" value="Alejo" id="apellido2" disabled></input></p>
+                    <p>Email: <input type="text" value="pepitoreig.alu@iespacomolla.es" id="email" disabled></input></p>
+                </div>
+                    
+                <section class="tablaCursosProfesor">
+                    <h2>Asignaturas</h2>
+                    <div class="tbl-header">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th>Curso</th>
+                                    <th>Asignatura</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="tbl-content">
+                        <table cellpadding="0" cellspacing="0" border="0" id="tablaAsignaturas">
+                            <tbody id="asignatura">
+                                <tr>
+                                    <td>AAC</td>
+                                    <td>AUSTRALIAN COMPANY </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+    `;
+};
+export const pintarLineaAsignaturaAlumno = (curso, asignatura) => {
     return `<tr><td>${curso}</td><td>${asignatura}</td></tr>`;
 };
 

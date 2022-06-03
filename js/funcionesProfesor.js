@@ -1,7 +1,6 @@
 "use strict";
-import { verAlumnos, verAsignatura } from "../includes/asignaturas.js";
 import * as f from "../includes/funciones.js";
-import { actualizarProfesor, iniciarAsignaturasAlumnosProfesor, verAsignaturasProfesor } from "../includes/profesores.js";
+import { iniciarAsignaturasAlumnosProfesor, verAsignaturasProfesor } from "../includes/profesores.js";
 import * as wordle from "../includes/wordle.js";
 var d = document;
 
@@ -28,26 +27,11 @@ export const pintarMenu = (plantillas, profesor) => {
 
     d.getElementById("perfil").addEventListener("click", () => {
         d.getElementById("contenido").innerHTML = plantillas.pintarPerfilProfesor();
-        //Perfil
+
         d.getElementById("nombre").value = profesor.nombre;
         d.getElementById("email").value = profesor.email;
         d.getElementById("apellido1").value = profesor.apellido1;
         d.getElementById("apellido2").value = profesor.apellido2;
-        d.getElementById("editarDatos").addEventListener("click", () => {
-            d.getElementById("nombre").removeAttribute("disabled");
-            d.getElementById("apellido1").removeAttribute("disabled");
-            d.getElementById("apellido2").removeAttribute("disabled");
-            d.getElementById("editarDatosConf").removeAttribute("hidden");
-            d.getElementById("editarDatos").setAttribute("hidden","true");
-            d.getElementById("editarDatosConf").addEventListener("click", () => {
-                actualizarProfesor(profesor.id,d.getElementById("nombre").value,d.getElementById("apellido1").value,d.getElementById("apellido2").value);
-                d.getElementById("editarDatos").removeAttribute("hidden");
-                d.getElementById("editarDatosConf").setAttribute("hidden","true");
-                d.getElementById("nombre").setAttribute("disabled","true");
-                d.getElementById("apellido1").setAttribute("disabled","true");
-                d.getElementById("apellido2").setAttribute("disabled","true");
-            },false);
-        },false);
 
         //Asignaturas
         verAsignaturasProfesor();
