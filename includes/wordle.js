@@ -156,6 +156,10 @@ export const nuevoDiccionario = (array) => {
     }
 };
 
+export const vaciarDiccionario = () => {
+    dictionary.splice(0, dictionary.length);
+};
+
 export const anadirPalabraDiccionario = (palabra) => {
     dictionary.push(palabra);
 };
@@ -167,7 +171,7 @@ export const borrarPalabraDiccionario = (palabra) => {
     }
 };
 
-const reiniciarWordle = () => {
+export const reiniciarWordle = () => {
     state.grid = Array(6)
         .fill()
         .map(() => Array(5).fill(''));
@@ -178,9 +182,8 @@ const reiniciarWordle = () => {
 };
 
 export const iniciarWordles = () => {
-    document.getElementById("contenido").innerHTML = "<div id='game'></div>";
     const game = document.getElementById("game");
-    reiniciarWordle();
+    game.innerHTML = "";
     drawGrid(game);
 
     registerKeyboardEvents();

@@ -67,7 +67,7 @@ onAuthStateChanged(autentificacion, (usuario) => {
           alu.esAlumno(usuario.email);
         }
     } else {
-        console.log("Sesión no iniciada.");
+        message("Sesión no iniciada.", "mal", 3000);
     }
 });
 
@@ -86,7 +86,7 @@ export const iniciarSesion = (usuario, contra) => {
         
       })
       .catch((error) => {
-        console.log("Error al iniciar sesión");
+        message("Error al iniciar sesión", "mal", 3000);
       });
 };
 
@@ -102,3 +102,25 @@ export const cerrarSesion = () => {
         console.log(error);
       });
 };
+
+// Mensaje informativo
+function message(message, type, time) {
+  let infoGame = document.getElementById("info");
+  infoGame.innerHTML = message;
+  infoGame.classList.remove("invisible");
+  if(type == "mal"){
+      infoGame.classList.add("mal");
+  }else {
+      infoGame.classList.add("bien");
+  }
+  
+  setTimeout( () => {
+     infoGame.classList.add("invisible");
+     if(type == "mal"){
+      infoGame.classList.remove("mal");
+  }else {
+      infoGame.classList.remove("bien");
+  }
+     infoGame.innerHTML = "";
+  }, time);
+}

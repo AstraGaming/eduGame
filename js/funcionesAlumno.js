@@ -22,7 +22,7 @@ export const pintarMenu = (plantillas, alumno) => {
         d.getElementById("apellido2").value = alumno.apellido2;
 
         //Asignaturas
-        alus.verAsignaturasAlumno();
+        alus.verAsignaturasAlumnoPerfil();
         
     }, false);
 
@@ -40,7 +40,10 @@ const aplicarFuncionalidadJuegos = () => {
 
     // Juego wordle sin implementar.
     d.getElementById("wordle").addEventListener("click", () => {
+        d.getElementById("contenido").innerHTML = plantillas.pintarAsignaturasWordleAlumno();
+        alus.verAsignaturasAlumno();
         wordle.iniciarWordles();
+        wordle.reiniciarWordle();
     }, false);
 
      // Juego akinator sin implementar.

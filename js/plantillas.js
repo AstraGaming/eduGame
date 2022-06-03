@@ -45,8 +45,8 @@ export const pintarLogin = () => {
                         <button id="crearCuenta">Crear</button>
                     </div>
                 </div>
-                <!-- frontbox -->
-            </div>`;
+            </div>
+            <div id="info"></div>`;
 };
 
 export const pintarMenuProfesor = (idProfesor) => {
@@ -93,7 +93,7 @@ export const pintarMenuAlumno = (idAlumno) => {
                         <li id="cerrarSesion"><a>Cerrar sesión</a></li>
                     </ul>
                 </nav>
-                <div id="idProfesor" class="invisible">${idAlumno}</div>
+                <div id="idAlumno" class="invisible">${idAlumno}</div>
             </div>
     `;
 };
@@ -627,4 +627,29 @@ export const pintarAdminAsignaturas = () => {
                     </div>
                 </form>
             </div>`
+};
+
+export const pintarAsignaturasWordleAlumno = () => {
+    return `
+            <div id="alumnoClase">
+                <div class="wrap">
+                    <span class="decor"></span>
+                    <nav>
+                        <ul class="primary">
+                            <li>
+                                <a href=""> Asignatura: <span id="cursoActual"></span> - <span id="asignaturaActual"></span></a>
+                                <ul id="asignatura" class="sub">
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div id="game"></div>
+            <div id="infoGame"></div>
+    `;
+};
+
+export const pintarLineaAsignaturaWordleAlumno = (curso, nombre) => {
+    return `<li class="asignatura"><a><span>${curso}</span> - <span>${nombre}</span></a></li>`;
 };

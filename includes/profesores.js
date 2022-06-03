@@ -66,14 +66,13 @@ export const crearProfesorRegistro = async (nombre, ape1, ape2, email, pass) => 
             createUserWithEmailAndPassword(autentificacion, email, pass)
                   .then((credenciales) => {
                     editarProfesor(documento.data().id,nombre,ape1,ape2);
-                   console.log("actualizamos al profesor con los datos nuevos.");
                   })
                   .catch((error) => {
-                    console.log("error al crear usuario");
+                    message("Error al crear el usuario.", "mal", 3000);
                   });
         }
         else {
-            console.log("No se permite el registro.");
+            message("No se permite el registro - email no  registrado en nuestras bases.", "mal", 6000);
         }
     });
 }
@@ -340,3 +339,26 @@ export const verAsignaturasProfesor = async () => {
         listaAsignaturas.innerHTML += pintar.pintarLineaAsignaturaProfesor(asignaturasConsulta.docs[i].data().curso, asignaturasConsulta.docs[i].data().nombre);
     }
 };
+
+
+// Mensaje informativo.
+function message(message, type, time) {
+    let infoGame = document.getElementById("info");
+    infoGame.innerHTML = message;
+    infoGame.classList.remove("invisible");
+    if(type == "mal"){
+        infoGame.classList.add("mal");
+    }else {
+        infoGame.classList.add("bien");
+    }
+    
+    setTimeout( () => {
+       infoGame.classList.add("invisible");
+       if(type == "mal"){
+        infoGame.classList.remove("mal");
+    }else {
+        infoGame.classList.remove("bien");
+    }
+       infoGame.innerHTML = "";
+    }, time);
+}

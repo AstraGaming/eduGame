@@ -1,6 +1,7 @@
 "use strict";
 import * as pintar from "../js/plantillas.js";
 import * as alu from "../js/funcionesAlumno.js";
+import * as wordle from "./wordle.js";
 
 import {app, autentificacion} from "../js/datosConexion.js";
 import {
@@ -34,6 +35,7 @@ import { cerrarSesion } from "./funciones.js";
 const db = getFirestore(app);
 var d = document;
 const alumnos = collection(db, "alumnos");
+const asignaturas = collection(db, "asignaturas");
 
 //Crear dato en la lista alumnos.
 /* LO DEJAREMOS PARA LA PARTE DE ADMIN */
@@ -64,14 +66,14 @@ export const crearAlumnoRegistro = async (nombre, ape1, ape2, email, pass) => {
             createUserWithEmailAndPassword(autentificacion, email, pass)
                   .then((credenciales) => {
                     actualizarAlumno(documento.data().id,nombre,ape1,ape2);
-                   console.log("actualizamos al alumno con los datos nuevos.");
                   })
                   .catch((error) => {
                     console.log("error al crear usuario");
+                    message("Error al crear usuario.", "mal", 3000);
                   });
         }
         else {
-            console.log("No se permite el registro.");
+            message("No se permite el registro.", "mal", 3000);
         }
     });
 }
@@ -223,17 +225,87 @@ export const eliminarAlumno = async (id) => {
     }
 }
 
-// Escribir los alumnos de un profesor [Alumno].
-export const verAsignaturasAlumno = async () => {
-    const consulta = query(
-        asignaturas,
-        where("profesor", "==", document.getElementById("idProfesor").innerHTML.trim())
-    );
-    const asignaturasConsulta = await getDocs(consulta);
+export const verAsignaturasAlumnoPerfil = async () => {
+    var idAlumno = d.getElementById("idAlumno").innerHTML.trim();
 
-    var listaAsignaturas = document.getElementById("asignatura");
-    listaAsignaturas.innerHTML = "";
-    for (let i = 0; i < asignaturasConsulta.docs.length; i++) {
-        listaAsignaturas.innerHTML += pintar.pintarLineaAsignaturaProfesor(asignaturasConsulta.docs[i].data().curso, asignaturasConsulta.docs[i].data().nombre);
+    var asignaturasAlumno = d.getElementById("asignatura");
+    asignaturasAlumno.innerHTML = "";
+    const asignaturasRef = await getDocs(asignaturas);
+    asignaturasRef.docs.map((documento) => {
+        for (let i = 0; i < documento.data().alumnos.length; i++) {
+            if(documento.data().alumnos[i].trim() == idAlumno) {
+                asignaturasAlumno.innerHTML += pintar.pintarLineaAsignaturaAlumno(documento.data().curso, documento.data().nombre);
+            }
+        }
+    });   
+};
+
+export const verAsignaturasAlumno = async () => {
+    var idAlumno = d.getElementById("idAlumno").innerHTML.trim();
+
+    var asignaturasAlumno = d.getElementById("asignatura");
+    asignaturasAlumno.innerHTML = "";
+    const asignaturasRef = await getDocs(asignaturas);
+    asignaturasRef.docs.map((documento) => {
+        for (let i = 0; i < documento.data().alumnos.length; i++) {
+            if(documento.data().alumnos[i].trim() == idAlumno) {
+                asignaturasAlumno.innerHTML += pintar.pintarLineaAsignaturaWordleAlumno(documento.data().curso, documento.data().nombre);
+            }
+        }
+    });   
+
+    var asignaturas3 = document.getElementsByClassName("asignatura");
+    d.getElementById("cursoActual").innerHTML = asignaturas3[0].firstChild.firstChild.innerHTML;
+    d.getElementById("asignaturaActual").innerHTML = asignaturas3[0].firstChild.lastChild.innerHTML;
+    recogerPalabrasAsignatura(asignaturas3[0].firstChild.firstChild.innerHTML.trim(), asignaturas3[0].firstChild.lastChild.innerHTML.trim());
+
+    for (let i = 0; i < asignaturas3.length; i++) {
+        asignaturas3[i].addEventListener("click", () => {
+            d.getElementById("cursoActual").innerHTML = asignaturas3[i].firstChild.firstChild.innerHTML;
+            d.getElementById("asignaturaActual").innerHTML = asignaturas3[i].firstChild.lastChild.innerHTML;
+
+            recogerPalabrasAsignatura(asignaturas3[i].firstChild.firstChild.innerHTML.trim(), asignaturas3[i].firstChild.lastChild.innerHTML.trim());
+        }, false);
     }
 };
+
+// Activar el diccionario de un curso y asignatura concretos [WORDLE].
+export const recogerPalabrasAsignatura = async ( curso, nombreAsignatura) => {
+    const consulta = query(
+        asignaturas,
+        where("curso", "==", curso),
+        where("nombre", "==", nombreAsignatura),
+    );
+    const palabrasConsulta = await getDocs(consulta);
+
+    wordle.iniciarWordles();
+    wordle.vaciarDiccionario();
+
+    for (let i = 0; i < palabrasConsulta.docs[0].data().diccionario.length; i++) {
+        wordle.anadirPalabraDiccionario(palabrasConsulta.docs[0].data().diccionario[i]);
+    }
+    wordle.reiniciarWordle();
+};
+
+
+// Mensaje informativo.
+function message(message, type, time) {
+    let infoGame = document.getElementById("info");
+    infoGame.innerHTML = message;
+    infoGame.classList.remove("invisible");
+    if(type == "mal"){
+        infoGame.classList.add("mal");
+    }else {
+        infoGame.classList.add("bien");
+    }
+    
+    setTimeout( () => {
+       infoGame.classList.add("invisible");
+       if(type == "mal"){
+        infoGame.classList.remove("mal");
+    }else {
+        infoGame.classList.remove("bien");
+    }
+       infoGame.innerHTML = "";
+    }, time);
+}
